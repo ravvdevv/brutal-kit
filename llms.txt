@@ -1,0 +1,48 @@
+# BrutalKit
+
+> A lightweight, dependency-free Neo-Brutalist CSS component library with optional vanilla JavaScript interactions.
+
+BrutalKit provides composable `bk-` CSS primitives for buttons, cards, badges, forms, alerts, layout, tabs, dialogs, accordions, and tooltips. It does not impose a framework or global reset.
+
+## Canonical project resources
+
+- [README](https://github.com/ravvdevv/brutal-kit/blob/main/README.md): overview, installation, component inventory, development commands.
+- [Full AI reference](https://github.com/ravvdevv/brutal-kit/blob/main/llms-full.txt): expanded implementation and integration guidance.
+- [Documentation](https://brutal-kit.vercel.app/docs.html): rendered component examples and usage.
+- [Source CSS](https://github.com/ravvdevv/brutal-kit/blob/main/src/brutal.css): source of truth for tokens and component styles.
+- [Optional JavaScript](https://github.com/ravvdevv/brutal-kit/blob/main/src/brutal.js): tabs and dialog initialization.
+- [Built CSS](https://github.com/ravvdevv/brutal-kit/tree/main/dist): generated CDN-ready stylesheets.
+- [Build script](https://github.com/ravvdevv/brutal-kit/blob/main/scripts/build.mjs): how distributable CSS is generated.
+- [Tests](https://github.com/ravvdevv/brutal-kit/tree/main/tests): regression coverage.
+- [Contributing guide](https://github.com/ravvdevv/brutal-kit/blob/main/CONTRIBUTING.md): project workflow and contribution expectations.
+- [Agent instructions](https://github.com/ravvdevv/brutal-kit/blob/main/AGENTS.md): rules for coding agents.
+
+## Quick integration
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css">
+<button class="bk-button bk-button--primary" type="button">Continue</button>
+```
+
+Pin a published release tag for production when one exists. The `@main` CDN URL follows the moving default branch and is not immutable.
+
+Optional interactions:
+
+```js
+import { initBrutalKit } from "https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/src/brutal.js";
+initBrutalKit(document.querySelector("#app"));
+```
+
+The module auto-initializes the document when imported in a browser. Call the initializer for a separately mounted root. It currently handles tabs and native dialog triggers only.
+
+## Project facts
+
+- CSS-first and framework-agnostic.
+- No runtime dependency for CSS usage.
+- Uses `bk-` class names and `--bk-` CSS custom properties.
+- No global reset or global element styling.
+- Source styles live in `src/brutal.css`; generated artifacts live in `dist/`.
+- Build: `bun run build` (runs `node scripts/build.mjs`).
+- Tests: `bun run test` (Node's built-in test runner).
+- Development server: `bun run dev`.
+- Read `AGENTS.md` before modifying the repository.
