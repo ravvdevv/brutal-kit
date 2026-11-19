@@ -8,12 +8,14 @@ BrutalKit is a CDN-first, dependency-free CSS component toolkit for bold interfa
 
 ### CDN
 
-After publishing a tagged release, pin the stylesheet to that version:
+The repository does not have a published version tag yet. Use the default branch URL for testing:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@v0.1.0/dist/brutal.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css">
 <button class="bk-button bk-button--primary">Ship it ↗</button>
 ```
+
+The `@main` URL follows the latest commit and is not immutable. Once a release tag exists, replace `main` with that exact tag for production.
 
 ### Local development
 
