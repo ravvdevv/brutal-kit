@@ -10,7 +10,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="BrutalKit — Bold UI. No baggage.">
   <meta property="og:description" content="A lightweight, accessible Neo-Brutalist CSS toolkit. Compose useful interfaces without adopting another framework.">
-  <meta property="og:url" content="https://github.com/ravvdevv/brutal-kit">
+  <meta property="og:url" content="https://brutal-kit.vercel.app/">
+  <link rel="canonical" href="https://brutal-kit.vercel.app/">
   <meta property="og:site_name" content="BrutalKit">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="BrutalKit — Bold UI. No baggage.">
@@ -24,7 +25,11 @@
   <main class="shell" id="main">
     <nav class="nav" aria-label="Main navigation">
       <a class="wordmark" href="#" aria-label="BrutalKit home"><span class="mark">B.</span> brutal<span class="wordmark-light">kit</span></a>
-      <div class="nav-links">
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="nav-menu-label">Menu</span>
+        <span class="nav-menu-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="nav-links" id="primary-navigation">
         <a href="docs.html">Documentation</a>
         <a href="#principles">Why BrutalKit</a>
         <a href="#install">Get started</a>
