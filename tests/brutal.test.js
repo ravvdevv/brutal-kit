@@ -102,3 +102,9 @@ test("CSS minification preserves required math-operator whitespace", async () =>
   assert.match(result, /calc\(100% - 2rem\)/);
   assert.match(result, /calc\(10px \+ 2px\)/);
 });
+
+test("reduced-motion rules do not affect unrelated application elements", () => {
+  assert.match(css, /\.bk-button, \.bk-tab/);
+  assert.doesNotMatch(css, /color-scheme:\s*light/);
+  assert.doesNotMatch(css, /@media \(prefers-reduced-motion: reduce\)\s*\{\s*\*/);
+});
