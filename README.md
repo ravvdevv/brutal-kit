@@ -20,6 +20,7 @@ bun install
 bun run dev
 bun run build
 bun run test
+bun run test
 ```
 
 ## Included primitives
@@ -49,3 +50,15 @@ bun run test
 ## License
 
 MIT. See [LICENSE](./LICENSE).
+
+## Accessibility
+
+BrutalKit includes visible keyboard focus indicators, reduced-motion handling, disabled and invalid form states, and semantic HTML examples. The project targets WCAG 2.2 AA, but this is not a claim of automatic conformance. Consumers should provide accessible names, labels, descriptions, and correct ARIA semantics in their markup.
+
+## Component classes
+
+- Buttons: `.bk-button`, `--primary`, `--secondary`, `--blue`, `--danger`, `--sm`, `--lg`, `--block`
+- Surfaces: `.bk-card`, `.bk-card--flat`, `.bk-badge`
+- Forms: `.bk-field`, `.bk-label`, `.bk-input`, `.bk-textarea`, `.bk-select`, `.bk-check`
+- Feedback: `.bk-alert`, `.bk-alert--success`, `.bk-alert--warning`, `.bk-alert--danger`
+- Layout: `.bk-stack`, `.bk-row`, `.bk-grid`, `.bk-divider`
