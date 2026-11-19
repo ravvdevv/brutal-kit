@@ -108,3 +108,14 @@ test("reduced-motion rules do not affect unrelated application elements", () => 
   assert.doesNotMatch(css, /color-scheme:\s*light/);
   assert.doesNotMatch(css, /@media \(prefers-reduced-motion: reduce\)\s*\{\s*\*/);
 });
+
+test("committed readable distribution matches the CSS source", async () => {
+  const dist = await readFile(new URL("../dist/brutal.css", import.meta.url), "utf8");
+  assert.equal(dist, css);
+});
+
+test("committed minified distribution matches the minifier output", async () => {
+  const { minifyCss } = await import("../scripts/minify-css.mjs");
+  const dist = await readFile(new URL("../dist/brutal.min.css", import.meta.url), "utf8");
+  assert.equal(dist, minifyCss(css) + "\\n");
+});
