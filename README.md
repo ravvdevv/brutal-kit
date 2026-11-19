@@ -10,7 +10,7 @@ BrutalKit is a dependency-free CSS toolkit for building bold web interfaces with
 - **Accessible by design:** visible focus states, reduced-motion support, semantic markup patterns, and keyboard support for tabs and dialogs.
 - **Small surface area:** no global reset and no global element styling.
 
-[Explore the source](https://github.com/ravvdevv/brutal-kit) · [Report an issue](https://github.com/ravvdevv/brutal-kit/issues) · [MIT License](./LICENSE)
+[Read the documentation](./docs.html) · [Explore the source](https://github.com/ravvdevv/brutal-kit) · [Report an issue](https://github.com/ravvdevv/brutal-kit/issues) · [MIT License](./LICENSE)
 
 ## Quick start
 
