@@ -19,7 +19,26 @@
 <article class="demo-card card-white"><span class="component-label">FORM / INPUT</span><label class="bk-label" for="demo-email">YOUR EMAIL</label><input class="bk-input" id="demo-email" type="email" placeholder="you@example.com"><span class="card-caption">Clear labels. Visible focus.</span></article>
 <article class="demo-card card-blue"><span class="component-label">ALERT / SUCCESS</span><div class="bk-alert bk-alert--success" role="status"><div><strong class="bk-alert__title">Saved.</strong><p class="bk-alert__body">Your changes are safely stored.</p></div></div><span class="card-caption">Feedback with meaning.</span></article>
 <article class="demo-card card-pink"><span class="component-label">FORM / TEXTAREA</span><div class="bk-field" style="width:100%"><label class="bk-label" for="demo-message">MESSAGE</label><textarea class="bk-textarea" id="demo-message" placeholder="Write something useful..."></textarea></div><span class="card-caption">Room to think.</span></article>
-</div></section>
+</div>
+<div class="interactive-demo">
+  <div class="eyebrow">03 / INTERACTIONS</div>
+  <h2>Not just pretty.<br>Actually interactive.</h2>
+  <div class="bk-tabs" data-bk-tabs role="tablist" aria-label="BrutalKit examples">
+    <button class="bk-tab" id="tab-one" type="button" role="tab" aria-selected="true" aria-controls="panel-one">Overview</button>
+    <button class="bk-tab" id="tab-two" type="button" role="tab" aria-selected="false" aria-controls="panel-two" tabindex="-1">Details</button>
+    <button class="bk-tab" id="tab-three" type="button" role="tab" aria-selected="false" aria-controls="panel-three" tabindex="-1">Usage</button>
+  </div>
+  <section class="bk-tabpanel" id="panel-one" role="tabpanel" aria-labelledby="tab-one"><strong>Built for composition.</strong> Keep the markup semantic and let the toolkit handle the interaction details.</section>
+  <section class="bk-tabpanel" id="panel-two" role="tabpanel" aria-labelledby="tab-two" hidden><strong>Keyboard-ready.</strong> Navigate with arrow keys, Home, and End. Selection state stays synchronized.</section>
+  <section class="bk-tabpanel" id="panel-three" role="tabpanel" aria-labelledby="tab-three" hidden><code>data-bk-tabs</code> enables the behavior with no framework dependency.</section>
+  <div class="hero-actions"><button class="bk-button bk-button--primary" type="button" data-bk-dialog-open="demo-dialog">Open dialog ↗</button><span class="card-caption">Native dialog. Focus returns to the trigger.</span></div>
+</div>
+<dialog class="bk-dialog" id="demo-dialog" data-bk-dialog aria-labelledby="demo-dialog-title">
+  <h2 class="bk-dialog__title" id="demo-dialog-title">A proper dialog.</h2>
+  <p class="bk-dialog__body">This uses the native HTML dialog element, including modal behavior and Escape-to-close support.</p>
+  <div class="hero-actions"><button class="bk-button bk-button--primary" type="button" data-bk-dialog-close>Got it</button></div>
+</dialog>
+</section>
 <section id="install" class="install"><div><div class="eyebrow">02 / GET MOVING</div><h2>One stylesheet.<br>A better starting point.</h2><p>Use the built CSS from jsDelivr after publishing a release. No runtime JavaScript dependency.</p></div>
 <div class="code-panel"><div class="code-top"><span>HTML</span><button id="copy-code" class="copy-button" type="button">Copy ↗</button></div><pre><code>&lt;link rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@v0.1.0/dist/brutal.min.css" /&gt;
@@ -28,4 +47,4 @@
   Ship it
 &lt;/button&gt;</code></pre><p id="copy-status" class="code-foot" role="status" aria-live="polite"></p><p class="code-foot">Pin a version in production. Your future self deserves stability.</p></div></section>
 <footer><a class="wordmark" href="#"><span class="mark">B.</span> brutal<span class="wordmark-light">kit</span></a><span>MIT licensed · Built in public · Made to be remixed.</span><a href="https://github.com/ravvdevv/brutal-kit">GitHub ↗</a></footer>
-</main><script type="module" src="/src/main.js"></script></body></html>
+</main><script type="module" src="/src/brutal.js"></script><script type="module" src="/src/main.js"></script></body></html>
