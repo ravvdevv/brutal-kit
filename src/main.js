@@ -1,6 +1,6 @@
 const copyButton = document.querySelector("#copy-code");
 const copyStatus = document.querySelector("#copy-status");
-const snippet = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@v0.1.0/dist/brutal.min.css" />';
+const snippet = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css" />';
 
 copyButton?.addEventListener("click", async () => {
   if (!navigator.clipboard?.writeText) {
