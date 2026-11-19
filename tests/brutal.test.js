@@ -76,5 +76,21 @@ test("CSS minification rejects malformed strings and comments", async () => {
 });
 
 test("the stylesheet does not override the browser's global hidden attribute", () => {
-  assert.doesNotMatch(css, /(^|\\n)\\s*\\[hidden\\]/);
+  assert.doesNotMatch(css, /(^|\n)\s*\[hidden\]/);
+});
+
+test("tab behavior skips disabled tabs and handles empty tablists safely", () => {
+  assert.match(behavior, /enabledIndexes/);
+  assert.match(behavior, /tab\.disabled/);
+  assert.match(behavior, /if \(tabs\.length === 0\) return/);
+});
+
+test("tab behavior resolves panels by ID and supports vertical orientation", () => {
+  assert.match(behavior, /getElementById\(id\)/);
+  assert.match(behavior, /aria-orientation.*vertical/);
+  assert.match(css, /\.bk-tabs\[aria-orientation="vertical"\]/);
+});
+
+test("the component stylesheet does not apply a global box-sizing reset", () => {
+  assert.doesNotMatch(css, /\*\s*,\s*\*::before\s*,\s*\*::after\s*\{\s*box-sizing/);
 });
