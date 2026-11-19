@@ -11,8 +11,9 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test",
     "check:manifest": "node scripts/check-component-manifest.mjs",
+    "check:docs": "node scripts/check-doc-links.mjs",
     "check:size": "node scripts/check-bundle-size.mjs",
-    "check": "bun run build && bun run test && bun run check:manifest && bun run check:size"
+    "check": "bun run build && bun run test && bun run check:manifest && bun run check:docs && bun run check:size"
   },
   "devDependencies": {
     "vite": "^6.0.0"
