@@ -130,3 +130,15 @@ test("committed minified distribution matches the minifier output", async () => 
   const dist = await readFile(new URL("../dist/brutal.min.css", import.meta.url), "utf8");
   assert.equal(dist, minifyCss(css) + "\n");
 });
+
+
+test("tab keyboard handling uses the document-safe event target helper", () => {
+  assert.match(behavior, /const target = eventElement\(event\.target\);/);
+  assert.doesNotMatch(behavior, /event\.target instanceof Element/);
+});
+
+test("provides a visually-hidden utility without removing content from accessibility APIs", () => {
+  assert.match(css, /\.bk-visually-hidden:not\(:focus\):not\(:active\)/);
+  assert.match(css, /clip-path:\s*inset\(50%\)/);
+  assert.match(css, /white-space:\s*nowrap/);
+});
