@@ -23,6 +23,6 @@ jobs:
         with:
           node-version: 22
       - name: Build distributable CSS
-        run: npm run build
+        run: node scripts/build.mjs
       - name: Run tests
-        run: npm test
+        run: node --test
