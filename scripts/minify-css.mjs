@@ -37,7 +37,7 @@ export function minifyCss(input) {
       continue;
     }
 
-    const punctuation = "{}:;,>+~";
+    const punctuation = "{}:;,>";
     if (pendingSpace && output && !punctuation.includes(char) && !punctuation.includes(output.at(-1))) output += " ";
     pendingSpace = false;
     output += char;
