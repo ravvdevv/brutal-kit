@@ -56,6 +56,17 @@ test("dialogs use native modal APIs and restore focus", () => {
   assert.match(behavior, /trigger\.focus\(\)/);
 });
 
+test("nested tablists are isolated from their parent tablist", () => {
+  assert.match(behavior, /tab\.closest\("\[data-bk-tabs\]"\) === tablist/);
+});
+
+test("DOM event handling supports nodes from another document", () => {
+  assert.match(behavior, /function eventElement\(target\)/);
+  assert.match(behavior, /target\?\.nodeType === 1/);
+  assert.match(behavior, /dialog\?\.tagName === "DIALOG"/);
+  assert.doesNotMatch(behavior, /instanceof HTMLDialogElement/);
+});
+
 test("interactive styles include keyboard-visible and hidden states", () => {
   assert.match(css, /\.bk-tab\[aria-selected="true"\]/);
   assert.match(css, /\.bk-dialog::backdrop/);
