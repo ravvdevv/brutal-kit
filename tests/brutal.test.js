@@ -29,3 +29,12 @@ test("defines design tokens instead of hard-coding component surfaces", () => {
   assert.match(css, /--bk-border:/);
   assert.match(css, /--bk-shadow:/);
 });
+
+
+test("build outputs are generated and non-empty", async () => {
+  const { stat } = await import("node:fs/promises");
+  for (const file of ["../dist/brutal.css", "../dist/brutal.min.css"]) {
+    const info = await stat(new URL(file, import.meta.url));
+    assert.ok(info.size > 0, `Build output is empty: ${file}`);
+  }
+});
