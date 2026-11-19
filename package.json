@@ -1,16 +1,10 @@
 {
   "name": "@ravvdevv/brutal-kit",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "description": "A CDN-first Neo-Brutalist UI toolkit.",
   "license": "MIT",
   "type": "module",
-  "files": [
-    "dist",
-    "src",
-    "README.md",
-    "LICENSE"
-  ],
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "vite --host 0.0.0.0",
@@ -19,17 +13,5 @@
   },
   "devDependencies": {
     "vite": "^6.0.0"
-  },
-  "style": "dist/brutal.css",
-  "unpkg": "dist/brutal.min.css",
-  "jsdelivr": "dist/brutal.min.css",
-  "exports": {
-    ".": "./dist/brutal.css",
-    "./style.css": "./dist/brutal.css",
-    "./min.css": "./dist/brutal.min.css",
-    "./js": "./src/brutal.js"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
