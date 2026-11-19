@@ -1,100 +1,204 @@
 # BrutalKit
 
-**Neo-Brutalism without the design compromises.**
+**A lightweight, accessible Neo-Brutalist CSS component library.**
 
-BrutalKit is a CDN-first, dependency-free CSS component toolkit for bold interfaces with clear hierarchy, strong contrast, tactile interactions, and accessible focus states.
+BrutalKit is a dependency-free CSS toolkit for building bold web interfaces without taking over your application's styles. It provides reusable buttons, cards, badges, form controls, alerts, layout utilities, and optional vanilla JavaScript interactions.
+
+- **CSS-first:** use the stylesheet without a framework or runtime dependency.
+- **CDN-friendly:** serve the prebuilt stylesheet directly from jsDelivr.
+- **Composable:** predictable `bk-` class names and customizable CSS variables.
+- **Accessible by design:** visible focus states, reduced-motion support, semantic markup patterns, and keyboard support for tabs and dialogs.
+- **Small surface area:** no global reset and no global element styling.
+
+[Explore the source](https://github.com/ravvdevv/brutal-kit) · [Report an issue](https://github.com/ravvdevv/brutal-kit/issues) · [MIT License](./LICENSE)
 
 ## Quick start
 
-### CDN
+### Use the CDN
 
-The repository does not have a published version tag yet. Use the default branch URL for testing:
+For evaluation and prototypes, add the stylesheet to your page:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css">
-<button class="bk-button bk-button--primary">Ship it ↗</button>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css"
+/>
+
+<button class="bk-button bk-button--primary" type="button">
+  Get started
+</button>
 ```
 
-The `@main` URL follows the latest commit and is not immutable. Once a release tag exists, replace `main` with that exact tag for production.
+**Release note:** the repository does not currently have a published version tag. The `@main` URL follows the latest default-branch commit and may change. Do not treat it as an immutable production dependency. Once a release tag is published, pin the CDN URL to that exact tag, for example `@vX.Y.Z`.
 
-### Local development
+### Use the stylesheet locally
 
-Requires Node.js 22+ and Bun for the Vite demo:
+Copy `dist/brutal.css` or `dist/brutal.min.css` into your project and reference it from your HTML:
 
-```bash
-bun install
-bun run dev
-bun run build
-bun run test
+```html
+<link rel="stylesheet" href="/assets/brutal.min.css" />
 ```
+
+The CSS works with plain HTML and can be used alongside React, Vue, Svelte, or other application frameworks. It does not require a framework-specific wrapper.
 
 ## Components
 
+BrutalKit provides a focused set of Neo-Brutalist UI primitives. Compose them with semantic HTML instead of adopting a rigid component architecture.
+
 | Component | Classes |
 | --- | --- |
-| Buttons | `.bk-button`, `--primary`, `--secondary`, `--blue`, `--danger`, `--sm`, `--lg`, `--block` |
-| Cards | `.bk-card`, `.bk-card--flat`, `.bk-card__icon`, `.bk-card__title` |
-| Badges | `.bk-badge`, `--blue`, `--success`, `--danger` |
-| Forms | `.bk-field`, `.bk-label`, `.bk-input`, `.bk-textarea`, `.bk-select`, `.bk-check` |
-| Feedback | `.bk-alert`, `--success`, `--warning`, `--danger` |
-| Layout | `.bk-stack`, `.bk-row`, `.bk-grid`, `.bk-divider` |
+| Buttons | `.bk-button`, `.bk-button--primary`, `.bk-button--secondary`, `.bk-button--blue`, `.bk-button--danger`, `.bk-button--sm`, `.bk-button--lg`, `.bk-button--block` |
+| Cards | `.bk-card`, `.bk-card--flat`, `.bk-card__icon`, `.bk-card__title`, `.bk-card__description` |
+| Badges | `.bk-badge`, `.bk-badge--blue`, `.bk-badge--success`, `.bk-badge--danger` |
+| Form controls | `.bk-label`, `.bk-field`, `.bk-field__hint`, `.bk-field__error`, `.bk-input`, `.bk-textarea`, `.bk-select`, `.bk-check`, `.bk-checkbox`, `.bk-switch` |
+| Feedback | `.bk-alert`, `.bk-alert--success`, `.bk-alert--warning`, `.bk-alert--danger` |
+| Layout | `.bk-stack`, `.bk-row`, `.bk-grid`, `.bk-divider`, `.bk-link` |
+| Interactive UI | `.bk-tabs`, `.bk-tab`, `.bk-tabpanel`, `.bk-accordion`, `.bk-dialog`, `.bk-tooltip` |
+| Accessibility | `.bk-visually-hidden` |
 
-Modifier classes are appended to their component, for example `bk-button bk-button--primary`.
+Modifiers are added to the base component class. For example:
 
-## Interactive components
+```html
+<button class="bk-button bk-button--primary">Save changes</button>
+<button class="bk-button bk-button--danger">Delete</button>
+```
 
-When working from a local clone, load the optional behavior module when you need tabs or dialogs:
+## Optional JavaScript interactions
+
+The stylesheet is independent of JavaScript. Tabs and dialogs use a small vanilla JavaScript module from the repository:
+
+```js
+import "https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/src/brutal.js";
+```
+
+For local development, import the module from your project instead:
 
 ```js
 import "./src/brutal.js";
 ```
 
-### Tabs
+The module initializes elements in the document automatically. If you are mounting UI into a separate root after page load, call the exported initializer:
 
-Use the WAI-ARIA tabs pattern. Each tab needs an `aria-controls` reference to its panel, and each panel needs an `aria-labelledby` reference to its tab.
+```js
+import { initBrutalKit } from "./src/brutal.js";
 
-```html
-<div class="bk-tabs" data-bk-tabs role="tablist" aria-label="Account settings">
-  <button class="bk-tab" id="profile-tab" role="tab" aria-selected="true" aria-controls="profile-panel">Profile</button>
-  <button class="bk-tab" id="security-tab" role="tab" aria-selected="false" aria-controls="security-panel" tabindex="-1">Security</button>
-</div>
-<section class="bk-tabpanel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab">Profile settings</section>
-<section class="bk-tabpanel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden>Security settings</section>
+initBrutalKit(document.querySelector("#app"));
 ```
 
-Tabs support arrow-key navigation, Home, and End. Horizontal tablists use left/right arrows; vertical tablists use up/down arrows. Disabled tabs are skipped. Set `aria-orientation="vertical"` on a vertical tablist. Nested tablists are initialized independently.
+The module currently provides tabs and dialog behavior. It does not add a framework, component runtime, or dependency to the CSS.
+
+### Tabs
+
+Use the WAI-ARIA tabs pattern. Each tab references its panel with `aria-controls`; each panel references its tab with `aria-labelledby`.
+
+```html
+<div
+  class="bk-tabs"
+  data-bk-tabs
+  role="tablist"
+  aria-label="Account settings"
+>
+  <button
+    class="bk-tab"
+    id="profile-tab"
+    type="button"
+    role="tab"
+    aria-selected="true"
+    aria-controls="profile-panel"
+  >
+    Profile
+  </button>
+  <button
+    class="bk-tab"
+    id="security-tab"
+    type="button"
+    role="tab"
+    aria-selected="false"
+    aria-controls="security-panel"
+    tabindex="-1"
+  >
+    Security
+  </button>
+</div>
+
+<section
+  class="bk-tabpanel"
+  id="profile-panel"
+  role="tabpanel"
+  aria-labelledby="profile-tab"
+>
+  Profile settings
+</section>
+<section
+  class="bk-tabpanel"
+  id="security-panel"
+  role="tabpanel"
+  aria-labelledby="security-tab"
+  hidden
+>
+  Security settings
+</section>
+```
+
+Horizontal tablists support left/right arrow navigation. Vertical tablists support up/down arrow navigation when `aria-orientation="vertical"` is set. Home and End move to the first and last enabled tabs. Disabled tabs are skipped, and nested tablists are initialized independently.
 
 ### Dialogs
 
-Use the native `dialog` element for built-in modal semantics, Escape-to-close behavior, and browser-managed focus handling.
+Use the native HTML `dialog` element:
 
 ```html
-<button class="bk-button bk-button--primary" data-bk-dialog-open="confirm-dialog">Open dialog</button>
-<dialog class="bk-dialog" id="confirm-dialog" data-bk-dialog aria-labelledby="confirm-title">
+<button
+  class="bk-button bk-button--primary"
+  type="button"
+  data-bk-dialog-open="confirm-dialog"
+>
+  Open dialog
+</button>
+
+<dialog
+  class="bk-dialog"
+  id="confirm-dialog"
+  data-bk-dialog
+  aria-labelledby="confirm-title"
+>
   <h2 class="bk-dialog__title" id="confirm-title">Confirm action</h2>
   <p class="bk-dialog__body">This action cannot be undone.</p>
-  <button class="bk-button" data-bk-dialog-close>Cancel</button>
+  <button class="bk-button" type="button" data-bk-dialog-close>
+    Cancel
+  </button>
 </dialog>
 ```
 
-The interaction module returns focus to the opening trigger when the dialog closes. Always provide a visible close or cancel action.
+The browser provides modal behavior and Escape-to-close support. BrutalKit returns focus to the opening trigger after the dialog closes. Always include a clear close or cancel action.
 
 ### Accordion and tooltip
 
-Use native disclosure semantics for accordions:
+Accordions use native disclosure elements:
 
 ```html
 <details class="bk-accordion">
   <summary class="bk-accordion__summary">What is included?</summary>
-  <div class="bk-accordion__content">A small set of composable primitives.</div>
+  <div class="bk-accordion__content">
+    A small set of composable interface primitives.
+  </div>
 </details>
 ```
 
-Tooltips can be styled with `.bk-tooltip` and a `data-bk-tooltip` attribute. Keep essential information in the page content too; tooltips are supplementary.
+Tooltips are supplementary. Keep essential information available in the page content:
 
-## Design tokens
+```html
+<button
+  class="bk-button bk-tooltip"
+  type="button"
+  data-bk-tooltip="Opens account settings"
+>
+  Settings
+</button>
+```
 
-Override the CSS custom properties to theme the toolkit:
+## Customize the design tokens
+
+BrutalKit exposes CSS custom properties for color, borders, shadows, radii, typography, and spacing. Override them in your own stylesheet:
 
 ```css
 :root {
@@ -109,33 +213,76 @@ Override the CSS custom properties to theme the toolkit:
 }
 ```
 
-## Accessibility
+Layout utilities also expose component-specific gap variables:
 
-Use `.bk-visually-hidden` for text that should remain available to assistive technology without being visually displayed. It becomes visible while focused or active, so it can also support focusable skip links.
+```css
+.page-actions {
+  --bk-row-gap: 1rem;
+}
 
-```html
-<span class="bk-visually-hidden">Current page: Account settings</span>
+.dashboard-grid {
+  --bk-grid-gap: 1.25rem;
+}
 ```
 
-BrutalKit includes visible keyboard focus indicators, reduced-motion handling, disabled and invalid form states, and semantic-friendly primitives. It does not apply a global box-sizing reset or global element styling, so existing application styles remain in control. The project aims for WCAG 2.2 AA, but this is not a claim of automatic conformance.
+## Accessibility
 
-Use semantic HTML, associate every form control with a label, provide accessible names for icon-only controls, and add appropriate descriptions and ARIA semantics where needed. Color must not be the only way information is conveyed.
+BrutalKit includes visible keyboard focus indicators, reduced-motion handling, disabled and invalid form states, and semantic-friendly interaction patterns.
 
-## Principles
+Use `.bk-visually-hidden` for content that should remain available to assistive technology. It becomes visible when focused or active, making it suitable for skip links:
 
-1. Strong hierarchy, not decoration for its own sake.
-2. Visible keyboard focus and semantic HTML.
-3. Reduced-motion support.
-4. Small, composable primitives with predictable class names.
-5. Version-pinned CDN URLs for production stability.
-6. CSS primitives have no runtime dependency. Optional interactions are provided by a small vanilla JavaScript module.
+```html
+<a class="bk-visually-hidden" href="#main-content">Skip to content</a>
+```
+
+The toolkit does not apply a global box-sizing reset or global element styles. Your application stays in control of its base styles.
+
+BrutalKit aims to support accessible interfaces, but using the toolkit does not automatically make an application WCAG-conformant. Use semantic HTML, associate form controls with labels, provide accessible names for icon-only controls, manage focus appropriately, and never rely on color alone to communicate meaning.
 
 ## Development
 
-- `bun run build` generates the tracked CDN stylesheets in `dist/`.
-- `bun run test` runs the Node.js test suite.
-- GitHub Actions runs the build and tests on pushes and pull requests to `main`.
+### Requirements
+
+- Node.js 22 or newer
+- Bun
+
+### Run locally
+
+```bash
+bun install
+bun run dev
+```
+
+### Build and test
+
+```bash
+bun run build
+bun run test
+```
+
+The build script generates the tracked CSS files in `dist/`. The test suite runs with Node's built-in test runner. GitHub Actions runs the build and tests on pushes and pull requests targeting `main`.
+
+## Project structure
+
+```text
+brutal-kit/
+├── src/
+│   ├── brutal.css       # Source component styles and design tokens
+│   ├── brutal.js        # Optional tabs and dialog behavior
+│   ├── demo.css         # Demo-site styles
+│   └── main.js          # Demo-site interactions
+├── dist/
+│   ├── brutal.css       # CDN-ready stylesheet
+│   └── brutal.min.css   # Minified stylesheet
+├── scripts/             # Build and minification scripts
+├── tests/               # Automated regression tests
+└── index.html            # Component demo
+```
+
+## Contributing
+
+Bug reports, focused improvements, and documentation fixes are welcome. Read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening an issue or pull request.
 
 ## License
 
-MIT. See [LICENSE](./LICENSE).
+BrutalKit is released under the [MIT License](./LICENSE).
