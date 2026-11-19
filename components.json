@@ -1,0 +1,27 @@
+{
+  "$schema": "./schemas/components.schema.json",
+  "schemaVersion": 1,
+  "library": {
+    "name": "BrutalKit",
+    "version": "0.1.0",
+    "styleEntry": "dist/brutal.min.css",
+    "styleSource": "src/brutal.css",
+    "scriptEntry": "src/brutal.js",
+    "scriptIsOptional": true,
+    "classPrefix": "bk-",
+    "tokenPrefix": "--bk-"
+  },
+  "components": [
+    {"id":"button","name":"Button","category":"actions","classes":["bk-button","bk-button--primary","bk-button--secondary","bk-button--blue","bk-button--danger","bk-button--sm","bk-button--lg","bk-button--block"],"requiresJavaScript":false,"semantics":"Use a native button for actions and an anchor for navigation. Do not use a clickable div.","accessibility":["Provide an accessible name.","Preserve visible focus.","Use the disabled attribute for unavailable native buttons."]},
+    {"id":"card","name":"Card","category":"content","classes":["bk-card","bk-card--flat","bk-card__icon","bk-card__title","bk-card__description"],"requiresJavaScript":false,"semantics":"Use an article or section when the content has a meaningful heading; otherwise use a neutral container."},
+    {"id":"badge","name":"Badge","category":"content","classes":["bk-badge","bk-badge--blue","bk-badge--success","bk-badge--danger"],"requiresJavaScript":false,"semantics":"Use concise text. Do not communicate status by color alone."},
+    {"id":"form-controls","name":"Form controls","category":"forms","classes":["bk-label","bk-field","bk-field__hint","bk-field__error","bk-input","bk-textarea","bk-select","bk-check","bk-checkbox","bk-switch"],"requiresJavaScript":false,"semantics":"Use native inputs and selects. Associate every control with a label using for/id or an enclosing label.","accessibility":["Connect hint and error text with aria-describedby.","Set aria-invalid=true when validation fails.","Never replace native keyboard behavior."]},
+    {"id":"alert","name":"Alert","category":"feedback","classes":["bk-alert","bk-alert--success","bk-alert--warning","bk-alert--danger","bk-alert__title","bk-alert__body"],"requiresJavaScript":false,"semantics":"Use role=alert only for urgent dynamically inserted messages; use role=status for non-urgent updates."},
+    {"id":"layout","name":"Layout utilities","category":"layout","classes":["bk-stack","bk-row","bk-grid","bk-divider","bk-link"],"requiresJavaScript":false,"semantics":"Use layout utilities for composition, not to replace semantic document structure."},
+    {"id":"tabs","name":"Tabs","category":"interaction","classes":["bk-tabs","bk-tab","bk-tabpanel"],"requiresJavaScript":true,"dataAttributes":["data-bk-tabs"],"entryPoint":"initBrutalKit","semantics":"Use only for layered views where switching panels is useful. Otherwise prefer links or disclosure elements.","keyboard":["ArrowLeft/ArrowRight for horizontal tablists.","ArrowUp/ArrowDown for vertical tablists.","Home/End for first/last enabled tab."],"markupContract":["Tablist has role=tablist and data-bk-tabs.","Each tab has role=tab, aria-controls, aria-selected and a stable id.","Each panel has role=tabpanel and aria-labelledby.","Inactive panels use the native hidden attribute."]},
+    {"id":"accordion","name":"Accordion","category":"disclosure","classes":["bk-accordion","bk-accordion__summary","bk-accordion__content"],"requiresJavaScript":false,"semantics":"Use native details and summary elements; no library JavaScript is required."},
+    {"id":"dialog","name":"Dialog","category":"interaction","classes":["bk-dialog","bk-dialog__title","bk-dialog__body"],"requiresJavaScript":true,"dataAttributes":["data-bk-dialog","data-bk-dialog-open","data-bk-dialog-close"],"entryPoint":"initBrutalKit","semantics":"Use the native dialog element. Provide an accessible title and a visible close/cancel action.","keyboard":["Native modal dialog supports Escape to close.","Focus returns to the opening trigger after close."]},
+    {"id":"tooltip","name":"Tooltip","category":"supplementary","classes":["bk-tooltip"],"requiresJavaScript":false,"dataAttributes":["data-bk-tooltip"],"semantics":"Supplementary information only. Essential instructions must remain visible outside the tooltip."},
+    {"id":"visually-hidden","name":"Visually hidden utility","category":"accessibility","classes":["bk-visually-hidden"],"requiresJavaScript":false,"semantics":"Use for screen-reader text and skip links. It becomes visible when focused or active."}
+  ]
+}
