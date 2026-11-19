@@ -1,0 +1,23 @@
+:root {
+  --bk-bg:#f7f4ec;--bk-surface:#fffefa;--bk-ink:#171717;--bk-muted:#625f58;
+  --bk-yellow:#ffd84d;--bk-blue:#a9d9ff;--bk-pink:#ffb9c8;
+  --bk-border:2px solid var(--bk-ink);--bk-shadow:5px 5px 0 var(--bk-ink);
+  --bk-shadow-sm:3px 3px 0 var(--bk-ink);--bk-radius:4px;
+  --bk-font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+.bk-button{display:inline-flex;align-items:center;justify-content:center;gap:.8rem;min-height:46px;padding:.75rem 1.1rem;border:var(--bk-border);border-radius:var(--bk-radius);background:var(--bk-surface);color:var(--bk-ink);box-shadow:var(--bk-shadow-sm);font:750 .95rem/1 var(--bk-font);text-decoration:none;cursor:pointer;transition:transform 120ms ease,box-shadow 120ms ease,background 120ms ease}
+.bk-button:hover{transform:translate(-2px,-2px);box-shadow:var(--bk-shadow)}
+.bk-button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--bk-ink)}
+.bk-button:focus-visible,.bk-input:focus-visible{outline:3px solid #2367d1;outline-offset:3px}
+.bk-button--primary{background:var(--bk-yellow)}.bk-button--secondary{background:var(--bk-surface)}
+.bk-button:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.bk-card{padding:1.2rem;border:var(--bk-border);border-radius:var(--bk-radius);background:var(--bk-surface);box-shadow:var(--bk-shadow);color:var(--bk-ink)}
+.bk-card__icon{display:grid;place-items:center;width:42px;height:42px;border:var(--bk-border);background:var(--bk-yellow);font-size:1.4rem}
+.bk-card h3{margin:1rem 0 .4rem;font:850 1.35rem/1.1 var(--bk-font)}
+.bk-card p{margin:0;color:var(--bk-muted);line-height:1.55}
+.bk-badge{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .7rem;border:2px solid var(--bk-ink);background:var(--bk-yellow);font:800 .72rem/1 var(--bk-font);letter-spacing:.04em}
+.bk-label{display:block;margin-bottom:.45rem;font:800 .72rem/1 var(--bk-font);letter-spacing:.07em}
+.bk-input{width:100%;min-height:46px;padding:.7rem .8rem;border:var(--bk-border);border-radius:var(--bk-radius);background:var(--bk-surface);color:var(--bk-ink);font:500 .95rem var(--bk-font)}
+.bk-input::placeholder{color:#77736b}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
