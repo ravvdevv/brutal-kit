@@ -60,7 +60,7 @@ Use the WAI-ARIA tabs pattern. Each tab needs an `aria-controls` reference to it
 <section class="bk-tabpanel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden>Security settings</section>
 ```
 
-Tabs support arrow-key navigation, Home, and End. Horizontal tablists use left/right arrows; vertical tablists use up/down arrows.
+Tabs support arrow-key navigation, Home, and End. Horizontal tablists use left/right arrows; vertical tablists use up/down arrows. Disabled tabs are skipped. Set `aria-orientation="vertical"` on a vertical tablist.
 
 ### Dialogs
 
@@ -109,7 +109,7 @@ Override the CSS custom properties to theme the toolkit:
 
 ## Accessibility
 
-BrutalKit includes visible keyboard focus indicators, reduced-motion handling, disabled and invalid form states, and semantic-friendly primitives. The project aims for WCAG 2.2 AA, but this is not a claim of automatic conformance.
+BrutalKit includes visible keyboard focus indicators, reduced-motion handling, disabled and invalid form states, and semantic-friendly primitives. It does not apply a global box-sizing reset or global element styling, so existing application styles remain in control. The project aims for WCAG 2.2 AA, but this is not a claim of automatic conformance.
 
 Use semantic HTML, associate every form control with a label, provide accessible names for icon-only controls, and add appropriate descriptions and ARIA semantics where needed. Color must not be the only way information is conveyed.
 
