@@ -1,0 +1,187 @@
+# BrutalKit: Full AI and LLM Reference
+
+## 1. Project identity
+
+BrutalKit is a lightweight, dependency-free, CSS-first Neo-Brutalist component library maintained in the repository `ravvdevv/brutal-kit`. It provides reusable primitives for application interfaces without requiring React, Vue, Svelte, or another framework. Frameworks can consume the classes normally.
+
+The library is deliberately small and composable. Do not turn it into a framework, add a runtime dependency for styling, or introduce a global reset.
+
+## 2. Source-of-truth map
+
+| Path | Responsibility |
+| --- | --- |
+| `src/brutal.css` | Authoritative component CSS and design tokens |
+| `src/brutal.js` | Optional browser interactions: tabs and dialogs |
+| `dist/brutal.css` | Generated distributable CSS |
+| `dist/brutal.min.css` | Generated minified distributable CSS |
+| `scripts/build.mjs` | Build pipeline for distributable CSS |
+| `tests/` | Automated regression tests |
+| `docs.html` | Human-readable documentation site |
+| `src/docs.css`, `src/docs.js` | Documentation page styles and behavior |
+| `index.html` | Landing page and interactive component demo |
+| `src/demo.css`, `src/main.js` | Landing/demo presentation and behavior |
+| `AGENTS.md` | Required coding-agent instructions |
+
+Never hand-edit generated `dist/` files as the primary change. Edit `src/brutal.css`, run the build, and commit the generated output alongside the source change.
+
+## 3. Design principles
+
+- Neo-Brutalist visual language: clear geometry, deliberate borders, hard offset shadows, restrained bright accents, and strong typography.
+- Prefer legibility and hierarchy over decoration.
+- Keep surfaces, spacing, border widths, radii, and shadows consistent through existing tokens.
+- Keep the library visually expressive without making every component loud.
+- Avoid gratuitous gradients, glassmorphism, neon, excessive rounding, random animation, ornamental dashboards, and decorative UI without a functional purpose.
+- Do not introduce arbitrary colors or one-off design tokens when an existing token or semantic modifier is appropriate.
+- Respect the consuming application's styles. Do not add broad selectors or reset native elements globally.
+
+## 4. Design tokens
+
+The current defaults in `src/brutal.css` include:
+
+```css
+:root {
+  --bk-bg: #f7f4ec;
+  --bk-surface: #fffefa;
+  --bk-ink: #171717;
+  --bk-muted: #625f58;
+  --bk-yellow: #ffd84d;
+  --bk-blue: #a9d9ff;
+  --bk-pink: #ffb9c8;
+  --bk-success: #c9f2d2;
+  --bk-danger: #ffd0cb;
+  --bk-border-width: 2px;
+  --bk-border: var(--bk-border-width) solid var(--bk-ink);
+  --bk-shadow: 5px 5px 0 var(--bk-ink);
+  --bk-shadow-sm: 3px 3px 0 var(--bk-ink);
+  --bk-radius: 4px;
+}
+```
+
+Typography and spacing tokens are also defined in the source. Inspect the current source before relying on a token not shown above. Layout utilities support local gap overrides including `--bk-stack-gap`, `--bk-row-gap`, and `--bk-grid-gap`.
+
+Consumers can override custom properties in their own stylesheet. Do not require them to fork the source.
+
+## 5. Component class inventory
+
+Use the exact classes currently implemented in `src/brutal.css` and documented in `README.md` / `docs.html`.
+
+- Buttons: `.bk-button`, `.bk-button--primary`, `.bk-button--secondary`, `.bk-button--blue`, `.bk-button--danger`, `.bk-button--sm`, `.bk-button--lg`, `.bk-button--block`.
+- Cards: `.bk-card`, `.bk-card--flat`, `.bk-card__icon`, `.bk-card__title`, `.bk-card__description`.
+- Badges: `.bk-badge`, `.bk-badge--blue`, `.bk-badge--success`, `.bk-badge--danger`.
+- Forms: `.bk-label`, `.bk-field`, `.bk-field__hint`, `.bk-field__error`, `.bk-input`, `.bk-textarea`, `.bk-select`, `.bk-check`, `.bk-checkbox`, `.bk-switch`.
+- Feedback: `.bk-alert`, `.bk-alert--success`, `.bk-alert--warning`, `.bk-alert--danger`.
+- Layout: `.bk-stack`, `.bk-row`, `.bk-grid`, `.bk-divider`, `.bk-link`.
+- Interactive: `.bk-tabs`, `.bk-tab`, `.bk-tabpanel`, `.bk-accordion`, `.bk-dialog`, `.bk-tooltip`.
+- Accessibility: `.bk-visually-hidden`.
+
+Do not invent class names, props, variants, or APIs. Verify the source and documentation before writing examples.
+
+## 6. CSS integration
+
+Use the built stylesheet from jsDelivr:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css">
+```
+
+The default-branch URL is mutable. For production, prefer a published, immutable version tag once the repository has one. Do not claim that an npm package exists: the current package metadata is a private development workspace and no npm package publication is established.
+
+BrutalKit intentionally does not apply a global box-sizing reset or broad element styling. An application may keep its own reset and typography.
+
+## 7. Optional JavaScript integration
+
+The CSS works independently. The optional browser module currently supports tabs and native `dialog` elements.
+
+```js
+import { initBrutalKit } from "./src/brutal.js";
+initBrutalKit(document.querySelector("#app"));
+```
+
+The module automatically initializes `document` when imported in a browser. The initializer uses a WeakSet to avoid duplicate initialization of the same root. If content is inserted later under a separately mounted root, call `initBrutalKit(root)` for that root.
+
+### Tabs contract
+
+- Tablist: `[data-bk-tabs][role="tablist"]`.
+- Tabs: `[role="tab"]` with `aria-controls` pointing to their panel.
+- Panels: `[role="tabpanel"]` with `aria-labelledby` pointing to the tab.
+- Exactly one enabled tab should be selected initially; the initializer chooses a valid enabled tab if markup is incomplete.
+- Arrow keys move between enabled tabs and wrap; Home and End move to the first and last enabled tabs.
+- Use `aria-orientation="vertical"` for vertical tablists.
+- Panels are hidden when inactive.
+
+### Dialog contract
+
+- Use the native `<dialog>` element with `data-bk-dialog`.
+- Open triggers use `data-bk-dialog-open="dialog-id"`.
+- Close triggers inside the dialog use `data-bk-dialog-close`.
+- Provide an accessible name, usually with `aria-labelledby`.
+- Native dialog behavior supplies modal focus handling and Escape-to-close; BrutalKit restores focus to the opener after close.
+- Always provide a visible close/cancel action.
+
+### Native disclosure and tooltip
+
+Accordions use native `<details>` / `<summary>`. Tooltips use `data-bk-tooltip` as supplementary information. Never put essential content exclusively in a tooltip.
+
+## 8. Accessibility and quality
+
+- Use semantic HTML and native controls where possible.
+- Every input needs a programmatic label.
+- Icon-only controls need accessible names.
+- Preserve visible keyboard focus.
+- Respect `prefers-reduced-motion`.
+- Do not use color as the only carrier of meaning.
+- Keep disabled, invalid, hint, and error states distinguishable.
+- Maintain usable target sizes and responsive layouts.
+- Do not claim WCAG conformance solely because the library has focus styles. Test the composed application.
+- When changing interactive behavior, test keyboard operation, focus movement, disabled controls, and nested components.
+
+## 9. Development workflow
+
+Requirements documented by the project: Node.js 22+ and Bun.
+
+```bash
+bun install
+bun run build
+bun run test
+bun run dev
+```
+
+The package scripts currently map to:
+- `build`: `node scripts/build.mjs`
+- `test`: `node --test`
+- `dev`: `vite --host 0.0.0.0`
+
+Run build and tests after changing library source. Check the generated diff. Add regression tests for behavior changes. Keep documentation examples aligned with the real API.
+
+## 10. AI-assisted programming rules
+
+Before editing:
+1. Read `AGENTS.md`, `README.md`, and relevant sections of `docs.html`.
+2. Inspect the actual source and tests. Do not infer APIs from class names or old examples.
+3. Identify whether the change belongs in library source, generated output, demo site, or docs.
+4. State the smallest coherent implementation plan when working interactively.
+
+While editing:
+1. Preserve the CSS-first, framework-agnostic contract.
+2. Avoid new dependencies unless they solve a demonstrated problem; explain the tradeoff.
+3. Keep changes focused and modular. Do not rewrite unrelated files.
+4. Do not add fake npm commands, fictional package versions, or unverified CDN paths.
+5. Do not hand-edit `dist/`; regenerate it through the build script.
+6. Keep examples copy-pasteable and accessible.
+7. Do not use placeholder controls that look functional but do nothing.
+
+Before finishing:
+1. Run `bun run build` and `bun run test`.
+2. Review `git diff --check` and the full diff.
+3. Verify docs, source, and generated CSS are consistent.
+4. Report files changed, commands run, and any tests not run.
+5. Do not claim deployment or browser verification unless it was actually performed.
+
+## 11. Stable references
+
+- Repository: https://github.com/ravvdevv/brutal-kit
+- Live documentation: https://brutal-kit.vercel.app/docs.html
+- Live landing page: https://brutal-kit.vercel.app/
+- Current CDN stylesheet (mutable main branch): https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css
+
+For authoritative details, inspect the current repository source. This document is a guide, not a substitute for implementation.
