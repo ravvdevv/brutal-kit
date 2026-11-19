@@ -63,6 +63,27 @@ Modifiers are added to the base component class. For example:
 <button class="bk-button bk-button--danger">Delete</button>
 ```
 
+## Design tokens
+
+The default theme uses warm paper, ink navy, purple primary actions, and restrained amber, sky, peach, mint, and lilac accents. It pairs DM Sans body text with Manrope display headings, 10px component radii, and offset ink shadows. Override the tokens locally without changing component markup:
+
+```css
+:root {
+  --bk-bg: #f7f6f2;
+  --bk-surface: #ffffff;
+  --bk-ink: #20233b;
+  --bk-muted: #686b7e;
+  --bk-purple: #7055d9;
+  --bk-purple-dark: #5940bf;
+  --bk-yellow: #ffc93c;
+  --bk-blue: #a7c8ff;
+  --bk-pink: #ffab7e;
+  --bk-success: #9ff0c2;
+  --bk-lilac: #cfc7ff;
+  --bk-radius: 10px;
+}
+```
+
 ## Optional JavaScript interactions
 
 The stylesheet is independent of JavaScript. Tabs and dialogs use a small vanilla JavaScript module from the repository:
@@ -202,11 +223,12 @@ BrutalKit exposes CSS custom properties for color, borders, shadows, radii, typo
 
 ```css
 :root {
-  --bk-bg: #f7f4ec;
-  --bk-surface: #fffefa;
-  --bk-ink: #171717;
-  --bk-yellow: #ffd84d;
-  --bk-blue: #a9d9ff;
+  --bk-bg: #f7f6f2;
+  --bk-surface: #ffffff;
+  --bk-ink: #20233b;
+  --bk-purple: #7055d9;
+  --bk-yellow: #ffc93c;
+  --bk-blue: #a7c8ff;
   --bk-border-width: 2px;
   --bk-shadow: 5px 5px 0 var(--bk-ink);
   --bk-radius: 4px;

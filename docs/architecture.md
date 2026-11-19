@@ -10,6 +10,12 @@ BrutalKit is a small CSS library, not a component framework. Keep the architectu
 4. **Metadata:** `components.json` inventories public classes and behavioral contracts; its shape is defined by `schemas/components.schema.json`.
 5. **Documentation:** `README.md`, `docs.html`, and `docs/recipes.md` describe the public API.
 
+## Visual language
+
+The default theme follows Cramio's design system: paper `#f7f6f2`, ink navy `#20233b`, purple primary `#7055d9`, amber `#ffc93c`, and restrained sky, peach, mint, and lilac accents. DM Sans is the body face and Manrope is the display face, with system fallbacks. Components use medium corner radii and offset ink shadows. Keep the visual language consistent, but do not add decorative motion or brand-specific assets to the core library.
+
+The public design tokens live in `src/brutal.css`. Keep demo and documentation styles aligned with those defaults without leaking demo-only selectors into the distributable stylesheet.
+
 ## Dependency policy
 
 - No runtime dependencies. Prefer browser-native HTML, CSS, and JavaScript.

@@ -35,7 +35,9 @@ Never hand-edit generated `dist/`. Edit source, run the build, and commit genera
 
 ## 4. Design tokens
 
-Current defaults include `--bk-bg`, `--bk-surface`, `--bk-ink`, `--bk-muted`, `--bk-yellow`, `--bk-blue`, `--bk-pink`, `--bk-success`, `--bk-danger`, `--bk-border-width`, `--bk-border`, `--bk-shadow`, `--bk-shadow-sm`, and `--bk-radius`. Inspect `src/brutal.css` for exact values and typography/spacing tokens.
+The visual direction follows Cramio's design system: paper `#f7f6f2`, ink navy `#20233b`, purple primary `#7055d9`, amber `#ffc93c`, sky `#a7c8ff`, peach `#ffab7e`, mint `#9ff0c2`, and lilac `#cfc7ff`. The default type pairing is DM Sans for body copy and Manrope for display headings, with system fallbacks. Components use 10px default radii and offset ink shadows.
+
+Current public tokens include `--bk-bg`, `--bk-surface`, `--bk-ink`, `--bk-muted`, `--bk-purple`, `--bk-purple-dark`, `--bk-yellow`, `--bk-blue`, `--bk-pink`, `--bk-success`, `--bk-danger`, `--bk-lilac`, `--bk-border-width`, `--bk-border`, `--bk-shadow`, `--bk-shadow-sm`, `--bk-radius`, `--bk-font`, and `--bk-font-display`. Inspect `src/brutal.css` for exact values.
 
 Consumers may override custom properties without forking the source. Layout utilities support local `--bk-stack-gap`, `--bk-row-gap`, and `--bk-grid-gap`.
 
