@@ -26,7 +26,9 @@ npm install @ravvdevv/brutal-kit
 Then import the stylesheet:
 
 ```js
-import "@ravvdevv/brutal-kit";\n// Optional interactive behavior:\nimport "@ravvdevv/brutal-kit/js";
+import "@ravvdevv/brutal-kit";
+// Optional interactive behavior:
+import "@ravvdevv/brutal-kit/js";
 ```
 
 ### Local development
