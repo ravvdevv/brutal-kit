@@ -12,3 +12,10 @@ h1{margin:27px 0 20px;font-size:clamp(3.6rem,8.5vw,7.7rem);line-height:.88;lette
 footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:27px 0 35px;border-top:1.5px solid #d8d3c8;font-size:.72rem;color:#625f58}footer .wordmark{color:#171717;font-size:1rem}
 @media(max-width:800px){.component-grid{grid-template-columns:repeat(2,1fr)}.hero-sticker{right:4%;top:16%;width:105px;height:105px;font-size:.9rem}.install{grid-template-columns:1fr;gap:25px}}
 @media(max-width:560px){.shell{padding:0 20px}.nav{height:68px}.nav-links{gap:12px;font-size:.72rem}.nav-links a:first-child{display:none}.hero{padding:85px 0 75px}h1{font-size:clamp(3.3rem,15vw,5rem)}.hero-sticker{position:static;margin:42px 0 0 auto;width:94px;height:94px}.section{padding:75px 0}.section-head{display:block}.section-head>p{margin-top:20px}.component-grid{gap:12px}.demo-card{min-height:215px;padding:14px}.bk-button{font-size:.8rem;padding:.7rem .8rem}footer{align-items:flex-start;flex-direction:column}}
+
+.interactive-demo{padding:82px 0;border-top:1.5px solid #d8d3c8}
+.interactive-demo h2{margin:17px 0 28px;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:.96;letter-spacing:-.075em}
+.interactive-demo .bk-tabs{max-width:620px}
+.interactive-demo .bk-tabpanel{max-width:620px;min-height:86px}
+.interactive-demo .hero-actions{align-items:center}
+@media(max-width:560px){.interactive-demo{padding:65px 0}.bk-tab{flex:1;padding:.7rem .45rem;font-size:.78rem}}
