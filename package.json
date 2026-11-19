@@ -5,12 +5,30 @@
   "description": "A CDN-first Neo-Brutalist UI toolkit.",
   "license": "MIT",
   "type": "module",
-  "files": ["dist", "src", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "vite --host 0.0.0.0",
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test"
   },
-  "devDependencies": { "vite": "^6.0.0" }
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "style": "dist/brutal.css",
+  "unpkg": "dist/brutal.min.css",
+  "jsdelivr": "dist/brutal.min.css",
+  "exports": {
+    ".": "./dist/brutal.css",
+    "./style.css": "./dist/brutal.css",
+    "./min.css": "./dist/brutal.min.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
