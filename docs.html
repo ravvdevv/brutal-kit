@@ -10,8 +10,8 @@
   <meta property="og:description" content="Examples, markup, and customization reference for the BrutalKit CSS component library.">
   <meta property="og:url" content="https://ravvdevv.github.io/brutal-kit/docs.html">
   <title>Documentation — BrutalKit</title>
-  <link rel="stylesheet" href="/dist/brutal.css">
-  <link rel="stylesheet" href="/src/docs.css">
+  <link rel="stylesheet" href="./dist/brutal.css">
+  <link rel="stylesheet" href="./src/docs.css">
 </head>
 <body>
   <a class="docs-skip" href="#docs-main">Skip to documentation</a>
@@ -60,7 +60,7 @@
         <p>Use the source stylesheet locally if you prefer to manage assets yourself:</p>
         <div class="code-block"><div class="code-head"><span>HTML · LOCAL FILE</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;link rel="stylesheet" href="/dist/brutal.css" /&gt;</code></pre></div>
         <p>Most components are CSS-only. For tabs and dialog open/close triggers, load the optional module:</p>
-        <div class="code-block"><div class="code-head"><span>HTML · OPTIONAL INTERACTIONS</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;script type="module" src="/src/brutal.js"&gt;&lt;/script&gt;</code></pre></div>
+        <div class="code-block"><div class="code-head"><span>HTML · OPTIONAL INTERACTIONS</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;script type="module" src="./src/brutal.js"&gt;&lt;/script&gt;</code></pre></div>
       </section>
 
       <section class="docs-section" id="buttons">
@@ -151,7 +151,7 @@
       <section class="docs-section" id="tabs">
         <h2>Tabs</h2><p>Tabs require the tablist, tab, and tabpanel relationships shown below. The optional JavaScript activates panels, supports arrow keys, Home and End, and isolates nested tab groups.</p>
         <div class="preview-box preview-stack">
-          <div class="bk-tabs" data-bk-tabs role="tablist" aria-label="Example documentation tabs"><button class="bk-tab" id="docs-tab-a" type="button" role="tab" aria-selected="true" aria-controls="docs-panel-a">First tab</button><button class="bk-tab" id="docs-tab-b" type="button" role="tab" aria-selected="false" aria-controls="docs-panel-b" tabindex="-1">Second tab</button><button class="bk-tab" id="docs-tab-c" type="button" role="tab" aria-selected="false" aria-controls="docs-panel-c" tabindex="-1">Disabled</button></div>
+          <div class="bk-tabs" data-bk-tabs role="tablist" aria-label="Example documentation tabs"><button class="bk-tab" id="docs-tab-a" type="button" role="tab" aria-selected="true" aria-controls="docs-panel-a">First tab</button><button class="bk-tab" id="docs-tab-b" type="button" role="tab" aria-selected="false" aria-controls="docs-panel-b" tabindex="-1">Second tab</button><button class="bk-tab" id="docs-tab-c" type="button" role="tab" aria-selected="false" aria-controls="docs-panel-c" tabindex="-1" disabled>Disabled</button></div>
           <section class="bk-tabpanel" id="docs-panel-a" role="tabpanel" aria-labelledby="docs-tab-a">This is the first panel. Use the arrow keys to move between tabs.</section><section class="bk-tabpanel" id="docs-panel-b" role="tabpanel" aria-labelledby="docs-tab-b" hidden>This is the second panel. Keyboard focus follows the active tab.</section><section class="bk-tabpanel" id="docs-panel-c" role="tabpanel" aria-labelledby="docs-tab-c" hidden>Disabled example panel.</section>
         </div>
         <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;div data-bk-tabs&gt;
@@ -260,6 +260,6 @@
     <button class="bk-button bk-button--primary" type="button" data-bk-dialog-close>Close dialog</button>
   </dialog>
   <script type="module" src="/src/brutal.js"></script>
-  <script type="module" src="/src/docs.js"></script>
+  <script type="module" src="./src/docs.js"></script>
 </body>
 </html>
