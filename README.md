@@ -10,7 +10,7 @@ BrutalKit is a dependency-free CSS toolkit for building bold web interfaces with
 - **Accessible by design:** visible focus states, reduced-motion support, semantic markup patterns, and keyboard support for tabs and dialogs.
 - **Small surface area:** no global reset and no global element styling.
 
-[Read the documentation](./docs.html) · [AI/LLM guide](./llms.txt) · [Full AI reference](./llms-full.txt) · [Agent instructions](./AGENTS.md) · [Explore the source](https://github.com/ravvdevv/brutal-kit) · [Report an issue](https://github.com/ravvdevv/brutal-kit/issues) · [MIT License](./LICENSE)
+[Read the documentation](./docs.html) · [AI/LLM guide](./llms.txt) · [Full AI reference](./llms-full.txt) · [Agent instructions](./AGENTS.md) · [Component manifest](./components.json) · [Architecture](./docs/architecture.md) · [Implementation recipes](./docs/recipes.md) · [Explore the source](https://github.com/ravvdevv/brutal-kit) · [Report an issue](https://github.com/ravvdevv/brutal-kit/issues) · [MIT License](./LICENSE)
 
 ## Quick start
 
@@ -258,6 +258,8 @@ bun run dev
 ```bash
 bun run build
 bun run test
+bun run check:manifest
+bun run check:size
 ```
 
 The build script generates the tracked CSS files in `dist/`. The test suite runs with Node's built-in test runner. GitHub Actions runs the build and tests on pushes and pull requests targeting `main`.
@@ -274,7 +276,10 @@ brutal-kit/
 ├── dist/
 │   ├── brutal.css       # CDN-ready stylesheet
 │   └── brutal.min.css   # Minified stylesheet
-├── scripts/             # Build and minification scripts
+├── scripts/             # Build, minification, manifest, and size checks
+├── components.json      # Machine-readable component API inventory
+├── schemas/             # JSON schemas for project metadata
+├── docs/                # Architecture and implementation recipes
 ├── tests/               # Automated regression tests
 └── index.html            # Component demo
 ```
