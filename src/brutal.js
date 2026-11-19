@@ -1,75 +1,100 @@
 const initialized = new WeakSet();
 
+function findById(root, id) {
+  if (!id) return null;
+  const doc = root.ownerDocument ?? (root.nodeType === 9 ? root : document);
+  const candidate = doc.getElementById(id);
+  return candidate && (root === doc || root.contains(candidate)) ? candidate : null;
+}
+
 export function initBrutalKit(root = document) {
-  if (initialized.has(root)) return;
+  if (!root || initialized.has(root)) return;
   initialized.add(root);
+
   const returnFocus = new WeakMap();
 
   root.querySelectorAll("[data-bk-tabs]").forEach((tablist) => {
     const tabs = [...tablist.querySelectorAll('[role="tab"]')];
-    const panels = tabs.map((tab) => {
-      const id = tab.getAttribute("aria-controls");
-      return id ? root.getElementById?.(id) ?? root.querySelector(`#${CSS.escape(id)}`) : null;
-    });
+    if (tabs.length === 0) return;
+
+    const panels = tabs.map((tab) => findById(root, tab.getAttribute("aria-controls")));
+    const enabledIndexes = tabs
+      .map((tab, index) => tab.disabled || tab.getAttribute("aria-disabled") === "true" ? -1 : index)
+      .filter((index) => index >= 0);
+
+    if (enabledIndexes.length === 0) return;
+
+    const requestedInitial = tabs.findIndex((tab, index) =>
+      tab.getAttribute("aria-selected") === "true" && enabledIndexes.includes(index)
+    );
+    const initial = requestedInitial >= 0 ? requestedInitial : enabledIndexes[0];
 
     const activate = (index, moveFocus = false) => {
+      if (!enabledIndexes.includes(index)) return;
+
       tabs.forEach((tab, i) => {
         const selected = i === index;
         tab.setAttribute("aria-selected", String(selected));
         tab.tabIndex = selected ? 0 : -1;
-        panels[i]?.toggleAttribute("hidden", !selected);
+        if (panels[i]) panels[i].hidden = !selected;
       });
-      if (moveFocus) tabs[index]?.focus();
+
+      if (moveFocus) tabs[index].focus();
     };
 
-    const initial = Math.max(0, tabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true"));
     activate(initial);
 
     tablist.addEventListener("click", (event) => {
-      const tab = event.target.closest('[role="tab"]');
+      const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const tab = target?.closest('[role="tab"]');
       const index = tabs.indexOf(tab);
       if (index >= 0) activate(index);
     });
 
     tablist.addEventListener("keydown", (event) => {
-      const current = tabs.indexOf(event.target.closest('[role="tab"]'));
-      if (current < 0) return;
+      const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const current = tabs.indexOf(target?.closest('[role="tab"]'));
+      if (current < 0 || !enabledIndexes.includes(current)) return;
+
       const vertical = tablist.getAttribute("aria-orientation") === "vertical";
       const nextKey = vertical ? "ArrowDown" : "ArrowRight";
       const previousKey = vertical ? "ArrowUp" : "ArrowLeft";
-      let next = current;
+      const position = enabledIndexes.indexOf(current);
+      let nextPosition;
 
-      if (event.key === nextKey) next = (current + 1) % tabs.length;
-      else if (event.key === previousKey) next = (current - 1 + tabs.length) % tabs.length;
-      else if (event.key === "Home") next = 0;
-      else if (event.key === "End") next = tabs.length - 1;
+      if (event.key === nextKey) nextPosition = (position + 1) % enabledIndexes.length;
+      else if (event.key === previousKey) nextPosition = (position - 1 + enabledIndexes.length) % enabledIndexes.length;
+      else if (event.key === "Home") nextPosition = 0;
+      else if (event.key === "End") nextPosition = enabledIndexes.length - 1;
       else return;
 
       event.preventDefault();
-      activate(next, true);
+      activate(enabledIndexes[nextPosition], true);
     });
   });
 
   root.addEventListener("click", (event) => {
-    const openTrigger = event.target.closest("[data-bk-dialog-open]");
+    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    const openTrigger = target?.closest("[data-bk-dialog-open]");
+
     if (openTrigger) {
-      const dialogId = openTrigger.getAttribute("data-bk-dialog-open");
-      const dialog = dialogId ? root.getElementById?.(dialogId) ?? root.querySelector(`#${CSS.escape(dialogId)}`) : null;
+      const dialog = findById(root, openTrigger.getAttribute("data-bk-dialog-open"));
       if (dialog instanceof HTMLDialogElement && !dialog.open) {
         returnFocus.set(dialog, openTrigger);
         dialog.showModal();
       }
-
       return;
     }
 
-    const closeTrigger = event.target.closest("[data-bk-dialog-close]");
-    if (closeTrigger) closeTrigger.closest("dialog")?.close();
+    const closeTrigger = target?.closest("[data-bk-dialog-close]");
+    const dialog = closeTrigger?.closest("dialog[data-bk-dialog]");
+    if (dialog?.open) dialog.close();
   });
 
   root.querySelectorAll("dialog[data-bk-dialog]").forEach((dialog) => {
     dialog.addEventListener("close", () => {
-      returnFocus.get(dialog)?.focus();
+      const trigger = returnFocus.get(dialog);
+      if (trigger?.isConnected) trigger.focus();
       returnFocus.delete(dialog);
     });
   });
