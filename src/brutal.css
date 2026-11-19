@@ -1,5 +1,4 @@
 :root {
-  color-scheme: light;
   --bk-bg: #f7f4ec;
   --bk-surface: #fffefa;
   --bk-ink: #171717;
@@ -77,7 +76,7 @@
 .bk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--bk-grid-gap, 1rem); }
 .bk-link { color: inherit; font-weight: 750; text-decoration-thickness: 2px; text-underline-offset: .2em; }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .bk-button, .bk-tab, .bk-tooltip[data-bk-tooltip]::after, .bk-dialog { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 
 /* Interactive primitives */
@@ -92,7 +91,7 @@
 .bk-accordion + .bk-accordion { border-top: 0; }
 .bk-accordion__summary { padding: .95rem 1rem; font-weight: 800; cursor: pointer; }
 .bk-accordion__content { padding: 0 1rem 1rem; color: var(--bk-muted); line-height: 1.55; }
-.bk-dialog { width: min( min(92vw, 560px), calc(100% - 2rem)); max-height: min(85vh, 720px); padding: 1.4rem; border: var(--bk-border); border-radius: var(--bk-radius); background: var(--bk-surface); color: var(--bk-ink); box-shadow: 8px 8px 0 var(--bk-ink); }
+.bk-dialog { width: min(92vw, 560px); max-width: calc(100% - 2rem); max-height: min(85vh, 720px); padding: 1.4rem; border: var(--bk-border); border-radius: var(--bk-radius); background: var(--bk-surface); color: var(--bk-ink); box-shadow: 8px 8px 0 var(--bk-ink); }
 .bk-dialog::backdrop { background: rgb(23 23 23 / 55%); }
 .bk-dialog[open] { margin: auto; }
 .bk-dialog :focus-visible { outline: 3px solid #2367d1; outline-offset: 3px; }
