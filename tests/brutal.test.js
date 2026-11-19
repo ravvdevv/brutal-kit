@@ -94,3 +94,10 @@ test("tab behavior resolves panels by ID and supports vertical orientation", () 
 test("the component stylesheet does not apply a global box-sizing reset", () => {
   assert.doesNotMatch(css, /\*\s*,\s*\*::before\s*,\s*\*::after\s*\{\s*box-sizing/);
 });
+
+test("CSS minification preserves required math-operator whitespace", async () => {
+  const { minifyCss } = await import("../scripts/minify-css.mjs");
+  const result = minifyCss(".x { width: calc(100% - 2rem); height: calc(10px + 2px); }");
+  assert.match(result, /calc\(100% - 2rem\)/);
+  assert.match(result, /calc\(10px \+ 2px\)/);
+});
