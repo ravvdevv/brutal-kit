@@ -52,7 +52,8 @@ test("interactive tabs support arrow keys and Home/End navigation", () => {
 test("dialogs use native modal APIs and restore focus", () => {
   assert.match(behavior, /showModal\(\)/);
   assert.match(behavior, /\.close\(\)/);
-  assert.match(behavior, /returnFocus\.get\(dialog\)\?\.focus\(\)/);
+  assert.match(behavior, /const trigger = returnFocus\.get\(dialog\)/);
+  assert.match(behavior, /trigger\.focus\(\)/);
 });
 
 test("interactive styles include keyboard-visible and hidden states", () => {
