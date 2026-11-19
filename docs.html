@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ec">
+  <meta name="description" content="BrutalKit documentation: practical examples for Neo-Brutalist buttons, cards, badges, forms, alerts, tabs, dialogs, accordions, tooltips, and layout utilities.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Documentation — BrutalKit">
+  <meta property="og:description" content="Examples, markup, and customization reference for the BrutalKit CSS component library.">
+  <meta property="og:url" content="https://ravvdevv.github.io/brutal-kit/docs.html">
+  <title>Documentation — BrutalKit</title>
+  <link rel="stylesheet" href="/dist/brutal.css">
+  <link rel="stylesheet" href="/src/docs.css">
+</head>
+<body>
+  <a class="docs-skip" href="#docs-main">Skip to documentation</a>
+  <header class="docs-topbar">
+    <a class="docs-brand" href="./"><span class="docs-mark">B.</span> brutal<span>kit</span></a>
+    <div class="docs-toplinks"><a href="./">Home</a><a class="docs-github" href="https://github.com/ravvdevv/brutal-kit" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+  </header>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <div class="sidebar-title">DOCUMENTATION</div>
+      <a class="sidebar-link active" href="#introduction">Introduction</a>
+      <a class="sidebar-link" href="#getting-started">Getting started</a>
+      <div class="sidebar-title sidebar-components">COMPONENTS</div>
+      <a class="sidebar-link" href="#buttons">Buttons</a>
+      <a class="sidebar-link" href="#cards">Cards</a>
+      <a class="sidebar-link" href="#badges">Badges</a>
+      <a class="sidebar-link" href="#forms">Form controls</a>
+      <a class="sidebar-link" href="#alerts">Alerts</a>
+      <a class="sidebar-link" href="#checkboxes">Checkboxes & switches</a>
+      <a class="sidebar-link" href="#layout">Layout utilities</a>
+      <a class="sidebar-link" href="#tabs">Tabs</a>
+      <a class="sidebar-link" href="#accordion">Accordion</a>
+      <a class="sidebar-link" href="#dialog">Dialog</a>
+      <a class="sidebar-link" href="#tooltip">Tooltip</a>
+      <a class="sidebar-link" href="#accessibility">Accessibility</a>
+      <a class="sidebar-link" href="#customization">Customization</a>
+      <a class="sidebar-link" href="#reference">Class reference</a>
+      <div class="sidebar-note"><strong>CSS first.</strong><br>The stylesheet works on its own. Import the small JS module for tabs and dialog triggers.</div>
+    </aside>
+    <main class="docs-main" id="docs-main">
+      <div class="docs-breadcrumb"><a href="./">BrutalKit</a><span>/</span><span>Documentation</span></div>
+      <section class="docs-intro" id="introduction">
+        <div class="docs-eyebrow">BRUTALKIT / DOCUMENTATION</div>
+        <h1>Build bold.<br><span>Stay in control.</span></h1>
+        <p class="docs-lead">BrutalKit is a lightweight Neo-Brutalist CSS component library. It gives you a consistent visual foundation while keeping your HTML, application architecture, and JavaScript in your hands.</p>
+        <div class="docs-tags"><span>CSS-first</span><span>Vanilla JavaScript</span><span>MIT license</span><span>No framework dependency</span></div>
+      </section>
+
+      <section class="docs-section" id="getting-started">
+        <div class="section-kicker">01 / START HERE</div><h2>Getting started</h2>
+        <p>Include the compiled stylesheet in your document. The CDN URL below tracks <code>main</code>; pin a release tag once you publish one for reproducible deployments.</p>
+        <div class="code-block"><div class="code-head"><span>HTML · CDN</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@main/dist/brutal.min.css"
+/&gt;</code></pre></div>
+        <p>Use the source stylesheet locally if you prefer to manage assets yourself:</p>
+        <div class="code-block"><div class="code-head"><span>HTML · LOCAL FILE</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;link rel="stylesheet" href="/dist/brutal.css" /&gt;</code></pre></div>
+        <p>Most components are CSS-only. For tabs and dialog open/close triggers, load the optional module:</p>
+        <div class="code-block"><div class="code-head"><span>HTML · OPTIONAL INTERACTIONS</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;script type="module" src="/src/brutal.js"&gt;&lt;/script&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="buttons">
+        <div class="section-kicker">02 / COMPONENTS</div><h2>Buttons</h2><p>Buttons use native button semantics. Choose a visual variant and size with modifier classes. Use a real <code>disabled</code> attribute when an action is unavailable.</p>
+        <div class="preview-box"><div class="preview-row"><button class="bk-button" type="button">Default</button><button class="bk-button bk-button--primary" type="button">Primary</button><button class="bk-button bk-button--blue" type="button">Blue</button><button class="bk-button bk-button--danger" type="button">Danger</button></div><div class="preview-row"><button class="bk-button bk-button--sm" type="button">Small</button><button class="bk-button" type="button">Default size</button><button class="bk-button bk-button--lg" type="button">Large</button><button class="bk-button" type="button" disabled>Disabled</button></div></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;button class="bk-button" type="button"&gt;Default&lt;/button&gt;
+&lt;button class="bk-button bk-button--primary" type="button"&gt;Primary&lt;/button&gt;
+&lt;button class="bk-button bk-button--blue" type="button"&gt;Blue&lt;/button&gt;
+&lt;button class="bk-button bk-button--danger" type="button"&gt;Danger&lt;/button&gt;
+&lt;button class="bk-button bk-button--sm" type="button"&gt;Small&lt;/button&gt;
+&lt;button class="bk-button bk-button--lg" type="button"&gt;Large&lt;/button&gt;
+&lt;button class="bk-button bk-button--block" type="button"&gt;Full width&lt;/button&gt;</code></pre></div>
+        <div class="docs-callout"><strong>Note:</strong> <code>.bk-button--block</code> sets width to 100%. Keep the native button type explicit inside forms to avoid accidental submission.</div>
+      </section>
+
+      <section class="docs-section" id="cards">
+        <h2>Cards</h2><p>Cards are content containers. The flat modifier removes the offset shadow when a quieter surface is more appropriate.</p>
+        <div class="preview-box preview-card"><article class="bk-card"><span class="bk-card__icon" aria-hidden="true">✳</span><h3 class="bk-card__title">A useful card</h3><p class="bk-card__description">A small content surface with a clear hierarchy and a little bit of attitude.</p></article><article class="bk-card bk-card--flat"><h3 class="bk-card__title">Flat variation</h3><p class="bk-card__description">Same border and surface, without the offset shadow.</p></article></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;article class="bk-card"&gt;
+  &lt;span class="bk-card__icon" aria-hidden="true"&gt;✳&lt;/span&gt;
+  &lt;h3 class="bk-card__title"&gt;Card title&lt;/h3&gt;
+  &lt;p class="bk-card__description"&gt;Supporting text goes here.&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;article class="bk-card bk-card--flat"&gt;...&lt;/article&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="badges">
+        <h2>Badges</h2><p>Use badges for short labels or status. Do not rely on color alone to communicate meaning.</p>
+        <div class="preview-box"><div class="preview-row"><span class="bk-badge">DEFAULT</span><span class="bk-badge bk-badge--blue">INFORMATION</span><span class="bk-badge bk-badge--success">SUCCESS</span><span class="bk-badge bk-badge--danger">ATTENTION</span></div></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;span class="bk-badge"&gt;Default&lt;/span&gt;
+&lt;span class="bk-badge bk-badge--blue"&gt;Information&lt;/span&gt;
+&lt;span class="bk-badge bk-badge--success"&gt;Success&lt;/span&gt;
+&lt;span class="bk-badge bk-badge--danger"&gt;Attention&lt;/span&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="forms">
+        <h2>Form controls</h2><p>Pair every control with a visible label. Hint and error text can be connected using <code>aria-describedby</code>.</p>
+        <div class="preview-box form-preview"><div class="bk-field"><label class="bk-label" for="docs-name">Display name</label><input class="bk-input" id="docs-name" placeholder="Ada Lovelace"><span class="bk-field__hint">This is how your name appears to others.</span></div><div class="bk-field"><label class="bk-label" for="docs-message">Message</label><textarea class="bk-textarea" id="docs-message" placeholder="Write something useful..."></textarea></div><div class="bk-field"><label class="bk-label" for="docs-role">Role</label><select class="bk-select" id="docs-role"><option>Developer</option><option>Designer</option><option>Student</option></select></div><div class="bk-field"><label class="bk-label" for="docs-error">Username</label><input class="bk-input" id="docs-error" aria-invalid="true" aria-describedby="docs-error-message" value="taken-name"><span class="bk-field__error" id="docs-error-message">That username is unavailable.</span></div></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;div class="bk-field"&gt;
+  &lt;label class="bk-label" for="email"&gt;Email address&lt;/label&gt;
+  &lt;input class="bk-input" id="email" type="email"
+    aria-describedby="email-hint" /&gt;
+  &lt;span class="bk-field__hint" id="email-hint"&gt;
+    We will only use this for account updates.
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;textarea class="bk-textarea" aria-label="Message"&gt;&lt;/textarea&gt;
+&lt;select class="bk-select" aria-label="Choose a role"&gt;...&lt;/select&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="alerts">
+        <h2>Alerts</h2><p>Alerts are static feedback regions. Choose an appropriate live-region role based on the urgency and timing of the message.</p>
+        <div class="preview-box preview-stack"><div class="bk-alert"><div><strong class="bk-alert__title">Heads up</strong><p class="bk-alert__body">Here is some useful information.</p></div></div><div class="bk-alert bk-alert--success" role="status"><div><strong class="bk-alert__title">Saved</strong><p class="bk-alert__body">Your changes have been saved.</p></div></div><div class="bk-alert bk-alert--warning"><div><strong class="bk-alert__title">Check this</strong><p class="bk-alert__body">One item needs your attention.</p></div></div><div class="bk-alert bk-alert--danger" role="alert"><div><strong class="bk-alert__title">Something failed</strong><p class="bk-alert__body">We could not complete that action.</p></div></div></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;div class="bk-alert bk-alert--success" role="status"&gt;
+  &lt;div&gt;
+    &lt;strong class="bk-alert__title"&gt;Saved&lt;/strong&gt;
+    &lt;p class="bk-alert__body"&gt;Your changes have been saved.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="checkboxes">
+        <h2>Checkboxes & switches</h2><p>These styles preserve native input behavior. The <code>.bk-switch</code> class currently styles the native control; it does not turn a checkbox into a custom animated switch.</p>
+        <div class="preview-box preview-stack"><label class="bk-check"><input class="bk-checkbox" type="checkbox" checked> Receive product updates</label><label class="bk-check"><input class="bk-checkbox" type="checkbox"> Remember this device</label><label class="bk-check"><input class="bk-switch" type="checkbox" checked> Enable notifications</label></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;label class="bk-check"&gt;
+  &lt;input class="bk-checkbox" type="checkbox" checked&gt;
+  Receive product updates
+&lt;/label&gt;
+
+&lt;label class="bk-check"&gt;
+  &lt;input class="bk-switch" type="checkbox"&gt;
+  Enable notifications
+&lt;/label&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="layout">
+        <h2>Layout utilities</h2><p>Use stack, row, and grid helpers to arrange content. Override the custom gap properties per instance when needed.</p>
+        <div class="preview-box preview-stack"><div class="bk-row"><span class="bk-badge">ROW ITEM</span><span class="bk-badge bk-badge--blue">ROW ITEM</span><span class="bk-badge bk-badge--success">ROW ITEM</span></div><div class="bk-grid"><div class="bk-card bk-card--flat">Grid item 1</div><div class="bk-card bk-card--flat">Grid item 2</div><div class="bk-card bk-card--flat">Grid item 3</div></div><div class="bk-stack" style="--bk-stack-gap:.4rem"><div class="bk-card bk-card--flat">Stack item 1</div><div class="bk-card bk-card--flat">Stack item 2</div></div></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;div class="bk-row" style="--bk-row-gap: 1rem"&gt;...&lt;/div&gt;
+&lt;div class="bk-grid" style="--bk-grid-gap: 1.5rem"&gt;...&lt;/div&gt;
+&lt;div class="bk-stack" style="--bk-stack-gap: .5rem"&gt;...&lt;/div&gt;
+&lt;hr class="bk-divider"&gt;
+&lt;a class="bk-link" href="/docs"&gt;Read the docs&lt;/a&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="tabs">
+        <h2>Tabs</h2><p>Tabs require the tablist, tab, and tabpanel relationships shown below. The optional JavaScript activates panels, supports arrow keys, Home and End, and isolates nested tab groups.</p>
+        <div class="preview-box preview-stack">
+          <div class="bk-tabs" data-bk-tabs role="tablist" aria-label="Example documentation tabs"><button class="bk-tab" id="docs-tab-a" type="button" role="tab" aria-selected="true" aria-controls="docs-panel-a">First tab</button><button class="bk-tab" id="docs-tab-b" type="button" role="tab" aria-selected="false" aria-controls="docs-panel-b" tabindex="-1">Second tab</button><button class="bk-tab" id="docs-tab-c" type="button" role="tab" aria-selected="false" aria-controls="docs-panel-c" tabindex="-1">Disabled</button></div>
+          <section class="bk-tabpanel" id="docs-panel-a" role="tabpanel" aria-labelledby="docs-tab-a">This is the first panel. Use the arrow keys to move between tabs.</section><section class="bk-tabpanel" id="docs-panel-b" role="tabpanel" aria-labelledby="docs-tab-b" hidden>This is the second panel. Keyboard focus follows the active tab.</section><section class="bk-tabpanel" id="docs-panel-c" role="tabpanel" aria-labelledby="docs-tab-c" hidden>Disabled example panel.</section>
+        </div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;div data-bk-tabs&gt;
+  &lt;div class="bk-tabs" role="tablist" aria-label="Account settings"&gt;
+    &lt;button class="bk-tab" id="tab-profile" role="tab"
+      aria-selected="true" aria-controls="panel-profile"&gt;
+      Profile
+    &lt;/button&gt;
+    &lt;button class="bk-tab" id="tab-security" role="tab"
+      aria-selected="false" aria-controls="panel-security" tabindex="-1"&gt;
+      Security
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;section class="bk-tabpanel" id="panel-profile"
+    role="tabpanel" aria-labelledby="tab-profile"&gt;...&lt;/section&gt;
+  &lt;section class="bk-tabpanel" id="panel-security"
+    role="tabpanel" aria-labelledby="tab-security" hidden&gt;...&lt;/section&gt;
+&lt;/div&gt;</code></pre></div>
+        <div class="docs-callout">The <code>data-bk-tabs</code> attribute is the initialization boundary. Each tab needs a unique ID and a matching <code>aria-controls</code> target.</div>
+      </section>
+
+      <section class="docs-section" id="accordion">
+        <h2>Accordion</h2><p>Accordions use the browser's native <code>details</code> and <code>summary</code> elements. No JavaScript is required.</p>
+        <div class="preview-box"><details class="bk-accordion"><summary class="bk-accordion__summary">Can I use this without JavaScript?</summary><div class="bk-accordion__content">Yes. The CSS components work independently. Only tabs and dialog triggers need the optional JavaScript module.</div></details><details class="bk-accordion"><summary class="bk-accordion__summary">Can I customize the colors?</summary><div class="bk-accordion__content">Yes. Override the documented CSS custom properties in your own stylesheet.</div></details></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;details class="bk-accordion"&gt;
+  &lt;summary class="bk-accordion__summary"&gt;Question&lt;/summary&gt;
+  &lt;div class="bk-accordion__content"&gt;Answer goes here.&lt;/div&gt;
+&lt;/details&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="dialog">
+        <h2>Dialog</h2><p>Use the native HTML <code>dialog</code> element. BrutalKit's optional JavaScript connects trigger and close buttons, opens the dialog modally, and restores focus to the trigger after closing.</p>
+        <div class="preview-box"><button class="bk-button bk-button--primary" type="button" data-bk-dialog-open="docs-example-dialog">Open live dialog ↗</button></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;button class="bk-button" data-bk-dialog-open="confirm-dialog"&gt;
+  Open dialog
+&lt;/button&gt;
+
+&lt;dialog class="bk-dialog" data-bk-dialog id="confirm-dialog"
+  aria-labelledby="confirm-title"&gt;
+  &lt;h2 class="bk-dialog__title" id="confirm-title"&gt;Confirm action&lt;/h2&gt;
+  &lt;p class="bk-dialog__body"&gt;Continue with this action?&lt;/p&gt;
+  &lt;button class="bk-button" data-bk-dialog-close&gt;Cancel&lt;/button&gt;
+&lt;/dialog&gt;</code></pre></div>
+        <div class="docs-callout">The dialog must have <code>data-bk-dialog</code>. Use a unique ID matching the trigger's <code>data-bk-dialog-open</code> value. Provide an accessible name with <code>aria-labelledby</code> or <code>aria-label</code>.</div>
+      </section>
+
+      <section class="docs-section" id="tooltip">
+        <h2>Tooltip</h2><p>Tooltips are CSS-only. Add a <code>data-bk-tooltip</code> attribute to an element with a keyboard focus target. Keep essential information visible elsewhere.</p>
+        <div class="preview-box"><button class="bk-button bk-tooltip" type="button" data-bk-tooltip="A short helper message">Hover or focus me</button></div>
+        <div class="code-block"><div class="code-head"><span>HTML</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;button class="bk-button bk-tooltip"
+  type="button" data-bk-tooltip="A short helper message"&gt;
+  Hover or focus me
+&lt;/button&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="accessibility">
+        <h2>Accessibility</h2><p>BrutalKit provides accessible styling and interaction foundations, but the consuming application is responsible for correct semantics, labels, validation, and complete user flows.</p>
+        <ul class="docs-list"><li>Use native elements and meaningful labels.</li><li>Keep visible keyboard focus. Do not remove outlines without an equivalent.</li><li>Connect help and error text using <code>aria-describedby</code>.</li><li>Use the correct live-region role for dynamic status and error messages.</li><li>Respect reduced-motion preferences and avoid conveying state through color alone.</li><li>Test your complete interface with keyboard and assistive technology.</li></ul>
+        <div class="code-block"><div class="code-head"><span>SCREEN-READER-ONLY TEXT</span><button class="copy-code" type="button">Copy</button></div><pre><code>&lt;span class="bk-visually-hidden"&gt;Opens in a new tab&lt;/span&gt;</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="customization">
+        <h2>Customization</h2><p>Override the CSS custom properties after the BrutalKit stylesheet. You can change the palette, border weight, shadows, radius, font stack, and spacing tokens.</p>
+        <div class="code-block"><div class="code-head"><span>CSS</span><button class="copy-code" type="button">Copy</button></div><pre><code>:root {
+  --bk-bg: #f7f4ec;
+  --bk-surface: #fffefa;
+  --bk-ink: #171717;
+  --bk-muted: #625f58;
+  --bk-yellow: #ffd84d;
+  --bk-blue: #a9d9ff;
+  --bk-pink: #ffb9c8;
+  --bk-success: #c9f2d2;
+  --bk-danger: #ffd0cb;
+  --bk-border-width: 2px;
+  --bk-shadow: 5px 5px 0 var(--bk-ink);
+  --bk-shadow-sm: 3px 3px 0 var(--bk-ink);
+  --bk-radius: 4px;
+  --bk-font: system-ui, sans-serif;
+}</code></pre></div>
+      </section>
+
+      <section class="docs-section" id="reference">
+        <h2>Class reference</h2><p>A compact index of the classes currently shipped in the stylesheet. This list reflects the implementation, not a roadmap.</p>
+        <div class="reference-table-wrap"><table class="reference-table"><thead><tr><th>Component</th><th>Classes / attributes</th><th>JavaScript</th></tr></thead><tbody>
+          <tr><td>Buttons</td><td><code>.bk-button</code>, <code>--primary</code>, <code>--secondary</code>, <code>--blue</code>, <code>--danger</code>, <code>--sm</code>, <code>--lg</code>, <code>--block</code></td><td>No</td></tr>
+          <tr><td>Cards</td><td><code>.bk-card</code>, <code>.bk-card--flat</code>, <code>.bk-card__icon</code>, <code>__title</code>, <code>__description</code></td><td>No</td></tr>
+          <tr><td>Badges</td><td><code>.bk-badge</code>, <code>--blue</code>, <code>--success</code>, <code>--danger</code></td><td>No</td></tr>
+          <tr><td>Forms</td><td><code>.bk-field</code>, <code>.bk-label</code>, <code>.bk-input</code>, <code>.bk-textarea</code>, <code>.bk-select</code>, hint and error classes</td><td>No</td></tr>
+          <tr><td>Feedback</td><td><code>.bk-alert</code>, <code>--success</code>, <code>--warning</code>, <code>--danger</code></td><td>No</td></tr>
+          <tr><td>Controls</td><td><code>.bk-check</code>, <code>.bk-checkbox</code>, <code>.bk-switch</code></td><td>No</td></tr>
+          <tr><td>Layout</td><td><code>.bk-stack</code>, <code>.bk-row</code>, <code>.bk-grid</code>, <code>.bk-divider</code>, <code>.bk-link</code></td><td>No</td></tr>
+          <tr><td>Tabs</td><td><code>.bk-tabs</code>, <code>.bk-tab</code>, <code>.bk-tabpanel</code>, <code>[data-bk-tabs]</code></td><td>Yes</td></tr>
+          <tr><td>Accordion</td><td><code>.bk-accordion</code>, <code>.bk-accordion__summary</code>, <code>__content</code></td><td>No</td></tr>
+          <tr><td>Dialog</td><td><code>.bk-dialog</code>, <code>[data-bk-dialog]</code>, <code>[data-bk-dialog-open]</code>, <code>[data-bk-dialog-close]</code></td><td>Yes</td></tr>
+          <tr><td>Tooltip</td><td><code>.bk-tooltip</code>, <code>[data-bk-tooltip]</code></td><td>No</td></tr>
+          <tr><td>Accessibility</td><td><code>.bk-visually-hidden</code></td><td>No</td></tr>
+        </tbody></table></div>
+      </section>
+      <div class="docs-bottom"><div><strong>That's the current API.</strong><p>Small, explicit, and documented against the actual source.</p></div><a class="bk-button bk-button--primary" href="https://github.com/ravvdevv/brutal-kit" target="_blank" rel="noreferrer">Contribute on GitHub ↗</a></div>
+      <footer class="docs-footer"><a class="docs-brand" href="./"><span class="docs-mark">B.</span> brutal<span>kit</span></a><span>Documentation for the current main branch · MIT license</span><a href="./">Back to home ↑</a></footer>
+    </main>
+  </div>
+  <dialog class="bk-dialog" id="docs-example-dialog" data-bk-dialog aria-labelledby="docs-dialog-title">
+    <h2 class="bk-dialog__title" id="docs-dialog-title">Native dialog, BrutalKit styling.</h2>
+    <p class="bk-dialog__body">This example uses the browser's modal dialog behavior. Press Escape or use the button below to close it.</p>
+    <button class="bk-button bk-button--primary" type="button" data-bk-dialog-close>Close dialog</button>
+  </dialog>
+  <script type="module" src="/src/brutal.js"></script>
+  <script type="module" src="/src/docs.js"></script>
+</body>
+</html>
