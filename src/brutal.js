@@ -57,7 +57,7 @@ export function initBrutalKit(root = document) {
     });
 
     tablist.addEventListener("keydown", (event) => {
-      const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const target = eventElement(event.target);
       const current = tabs.indexOf(target?.closest('[role="tab"]'));
       if (current < 0 || !enabledIndexes.includes(current)) return;
 
