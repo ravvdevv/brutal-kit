@@ -58,13 +58,23 @@ test("dialogs use native modal APIs and restore focus", () => {
 test("interactive styles include keyboard-visible and hidden states", () => {
   assert.match(css, /\.bk-tab\[aria-selected="true"\]/);
   assert.match(css, /\.bk-dialog::backdrop/);
-  assert.match(css, /\[hidden\]\s*\{/);
+  assert.match(css, /\.bk-tab:focus-visible/);
 });
 
 
 test('CSS minification preserves spaces inside strings', async () => {
-  const { minifyCss } = await import('../scripts/build.mjs');
+  const { minifyCss } = await import('../scripts/minify-css.mjs');
   const result = minifyCss('.x { content: "two  words"; } /* comment */');
   assert.match(result, /content:"two  words"/);
   assert.doesNotMatch(result, /comment/);
+});
+
+test("CSS minification rejects malformed strings and comments", async () => {
+  const { minifyCss } = await import("../scripts/minify-css.mjs");
+  assert.throws(() => minifyCss('.x { content: "broken; }'), /Unterminated CSS string/);
+  assert.throws(() => minifyCss(".x { color: red; /* broken"), /Unterminated CSS comment/);
+});
+
+test("the stylesheet does not override the browser's global hidden attribute", () => {
+  assert.doesNotMatch(css, /(^|\\n)\\s*\\[hidden\\]/);
 });
