@@ -79,7 +79,7 @@ export function initBrutalKit(root = document) {
   });
 
   root.addEventListener("click", (event) => {
-    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    const target = eventElement(event.target);
     const openTrigger = target?.closest("[data-bk-dialog-open]");
 
     if (openTrigger) {
