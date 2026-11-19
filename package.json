@@ -26,7 +26,8 @@
   "exports": {
     ".": "./dist/brutal.css",
     "./style.css": "./dist/brutal.css",
-    "./min.css": "./dist/brutal.min.css"
+    "./min.css": "./dist/brutal.min.css",
+    "./js": "./src/brutal.js"
   },
   "publishConfig": {
     "access": "public"
