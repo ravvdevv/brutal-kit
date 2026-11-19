@@ -24,7 +24,7 @@ npm install @ravvdevv/brutal-kit
 Then import the stylesheet:
 
 ```js
-import "@ravvdevv/brutal-kit";
+import "@ravvdevv/brutal-kit";\n// Optional interactive behavior:\nimport "@ravvdevv/brutal-kit/js";
 ```
 
 ### Local development
@@ -50,6 +50,57 @@ bun run test
 | Layout | `.bk-stack`, `.bk-row`, `.bk-grid`, `.bk-divider` |
 
 Modifier classes are appended to their component, for example `bk-button bk-button--primary`.
+
+## Interactive components
+
+Import the optional behavior module when you need tabs or dialogs:
+
+```js
+import "@ravvdevv/brutal-kit/js";
+```
+
+### Tabs
+
+Use the WAI-ARIA tabs pattern. Each tab needs an `aria-controls` reference to its panel, and each panel needs an `aria-labelledby` reference to its tab.
+
+```html
+<div class="bk-tabs" data-bk-tabs role="tablist" aria-label="Account settings">
+  <button class="bk-tab" id="profile-tab" role="tab" aria-selected="true" aria-controls="profile-panel">Profile</button>
+  <button class="bk-tab" id="security-tab" role="tab" aria-selected="false" aria-controls="security-panel" tabindex="-1">Security</button>
+</div>
+<section class="bk-tabpanel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab">Profile settings</section>
+<section class="bk-tabpanel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden>Security settings</section>
+```
+
+Tabs support arrow-key navigation, Home, and End. Horizontal tablists use left/right arrows; vertical tablists use up/down arrows.
+
+### Dialogs
+
+Use the native `dialog` element for built-in modal semantics, Escape-to-close behavior, and browser-managed focus handling.
+
+```html
+<button class="bk-button bk-button--primary" data-bk-dialog-open="confirm-dialog">Open dialog</button>
+<dialog class="bk-dialog" id="confirm-dialog" data-bk-dialog aria-labelledby="confirm-title">
+  <h2 class="bk-dialog__title" id="confirm-title">Confirm action</h2>
+  <p class="bk-dialog__body">This action cannot be undone.</p>
+  <button class="bk-button" data-bk-dialog-close>Cancel</button>
+</dialog>
+```
+
+The interaction module returns focus to the opening trigger when the dialog closes. Always provide a visible close or cancel action.
+
+### Accordion and tooltip
+
+Use native disclosure semantics for accordions:
+
+```html
+<details class="bk-accordion">
+  <summary class="bk-accordion__summary">What is included?</summary>
+  <div class="bk-accordion__content">A small set of composable primitives.</div>
+</details>
+```
+
+Tooltips can be styled with `.bk-tooltip` and a `data-bk-tooltip` attribute. Keep essential information in the page content too; tooltips are supplementary.
 
 ## Design tokens
 
@@ -81,7 +132,7 @@ Use semantic HTML, associate every form control with a label, provide accessible
 3. Reduced-motion support.
 4. Small, composable primitives with predictable class names.
 5. Version-pinned CDN URLs for production stability.
-6. No runtime JavaScript dependency.
+6. CSS primitives have no runtime dependency. Optional interactions are provided by a small vanilla JavaScript module.
 
 ## Development
 
