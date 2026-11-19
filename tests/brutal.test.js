@@ -60,3 +60,11 @@ test("interactive styles include keyboard-visible and hidden states", () => {
   assert.match(css, /\.bk-dialog::backdrop/);
   assert.match(css, /\[hidden\]\s*\{/);
 });
+
+
+test('CSS minification preserves spaces inside strings', async () => {
+  const { minifyCss } = await import('../scripts/build.mjs');
+  const result = minifyCss('.x { content: "two  words"; } /* comment */');
+  assert.match(result, /content:"two  words"/);
+  assert.doesNotMatch(result, /comment/);
+});
