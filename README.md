@@ -230,8 +230,8 @@ BrutalKit exposes CSS custom properties for color, borders, shadows, radii, typo
   --bk-yellow: #ffc93c;
   --bk-blue: #a7c8ff;
   --bk-border-width: 2px;
-  --bk-shadow: 5px 5px 0 var(--bk-ink);
-  --bk-radius: 4px;
+  --bk-shadow: 6px 6px 0 var(--bk-ink);
+  --bk-radius: 10px;
 }
 ```
 

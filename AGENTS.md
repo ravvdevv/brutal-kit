@@ -25,6 +25,8 @@ Verify class names, attributes, tokens, and behavior in source. Do not invent AP
 
 ## Design quality bar
 
+- Treat `cramio.site` as the visual reference: paper `#f7f6f2`, ink navy `#20233b`, purple `#7055d9`, amber `#ffc93c`, and restrained sky, peach, mint, and lilac accents. Use DM Sans for body text and Manrope for display headings, with system fallbacks.
+- Keep the library, landing page, and documentation visually related through tokens and typography. Do not copy Cramio's product-specific content or add its assets to the library.
 - Prioritize hierarchy, typography, spacing, alignment, contrast, and interaction clarity.
 - Use existing tokens before adding new ones.
 - Keep Neo-Brutalist borders and hard shadows intentional and consistent.
