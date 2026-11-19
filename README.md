@@ -15,7 +15,9 @@ After publishing a tagged release, pin the stylesheet to that version:
 <button class="bk-button bk-button--primary">Ship it ↗</button>
 ```
 
-### npm
+### npm (after publication)
+
+The npm package is prepared but has not been published yet. Once it is available:
 
 ```bash
 npm install @ravvdevv/brutal-kit
