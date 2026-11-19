@@ -45,7 +45,7 @@ function resolveTarget(source, rawTarget) {
   const decoded = decodeURIComponent(rawTarget);
   const [pathname, hash = ""] = decoded.split("#", 2);
   const cleanPath = pathname.split("?")[0];
-  let relative = cleanPath ? resolve(root, dirname(source), cleanPath) : resolve(root, source);
+  let relative = cleanPath ? (cleanPath.startsWith("/") ? resolve(root, `.${cleanPath}`) : resolve(root, dirname(source), cleanPath)) : resolve(root, source);
 
   if (cleanPath.endsWith("/")) relative = join(relative, "index.html");
   if (!extname(relative) && !cleanPath) relative = resolve(root, source);
