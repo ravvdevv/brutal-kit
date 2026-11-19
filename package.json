@@ -9,7 +9,10 @@
     "build": "node scripts/build.mjs",
     "dev": "vite --host 0.0.0.0",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node --test"
+    "test": "node --test",
+    "check:manifest": "node scripts/check-component-manifest.mjs",
+    "check:size": "node scripts/check-bundle-size.mjs",
+    "check": "bun run build && bun run test && bun run check:manifest && bun run check:size"
   },
   "devDependencies": {
     "vite": "^6.0.0"

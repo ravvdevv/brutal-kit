@@ -6,16 +6,16 @@ BrutalKit provides composable `bk-` CSS primitives for buttons, cards, badges, f
 
 ## Canonical project resources
 
-- [README](https://github.com/ravvdevv/brutal-kit/blob/main/README.md): overview, installation, component inventory, development commands.
-- [Full AI reference](https://github.com/ravvdevv/brutal-kit/blob/main/llms-full.txt): expanded implementation and integration guidance.
-- [Documentation](https://brutal-kit.vercel.app/docs.html): rendered component examples and usage.
-- [Source CSS](https://github.com/ravvdevv/brutal-kit/blob/main/src/brutal.css): source of truth for tokens and component styles.
-- [Optional JavaScript](https://github.com/ravvdevv/brutal-kit/blob/main/src/brutal.js): tabs and dialog initialization.
-- [Built CSS](https://github.com/ravvdevv/brutal-kit/tree/main/dist): generated CDN-ready stylesheets.
-- [Build script](https://github.com/ravvdevv/brutal-kit/blob/main/scripts/build.mjs): how distributable CSS is generated.
-- [Tests](https://github.com/ravvdevv/brutal-kit/tree/main/tests): regression coverage.
-- [Contributing guide](https://github.com/ravvdevv/brutal-kit/blob/main/CONTRIBUTING.md): project workflow and contribution expectations.
-- [Agent instructions](https://github.com/ravvdevv/brutal-kit/blob/main/AGENTS.md): rules for coding agents.
+- [README](https://github.com/ravvdevv/brutal-kit/blob/main/README.md): overview, installation, component inventory, and development.
+- [Full AI reference](https://github.com/ravvdevv/brutal-kit/blob/main/llms-full.txt): architecture, APIs, integration, and agent workflow.
+- [Component manifest](https://github.com/ravvdevv/brutal-kit/blob/main/components.json): machine-readable classes and behavior contracts.
+- [Manifest schema](https://github.com/ravvdevv/brutal-kit/blob/main/schemas/components.schema.json): JSON Schema for component metadata.
+- [Architecture guide](https://github.com/ravvdevv/brutal-kit/blob/main/docs/architecture.md): runtime boundaries and performance constraints.
+- [Implementation recipes](https://github.com/ravvdevv/brutal-kit/blob/main/docs/recipes.md): copyable semantic examples.
+- [Documentation](https://brutal-kit.vercel.app/docs.html): rendered component reference.
+- [Source CSS](https://github.com/ravvdevv/brutal-kit/blob/main/src/brutal.css): source of truth for tokens and styles.
+- [Optional JavaScript](https://github.com/ravvdevv/brutal-kit/blob/main/src/brutal.js): tabs and dialog behavior.
+- [Agent instructions](https://github.com/ravvdevv/brutal-kit/blob/main/AGENTS.md): repository rules for coding agents.
 
 ## Quick integration
 
@@ -24,7 +24,7 @@ BrutalKit provides composable `bk-` CSS primitives for buttons, cards, badges, f
 <button class="bk-button bk-button--primary" type="button">Continue</button>
 ```
 
-Pin a published release tag for production when one exists. The `@main` CDN URL follows the moving default branch and is not immutable.
+Pin an immutable release tag for production when one exists. The `@main` CDN URL follows the moving default branch.
 
 Optional interactions:
 
@@ -33,16 +33,16 @@ import { initBrutalKit } from "https://cdn.jsdelivr.net/gh/ravvdevv/brutal-kit@m
 initBrutalKit(document.querySelector("#app"));
 ```
 
-The module auto-initializes the document when imported in a browser. Call the initializer for a separately mounted root. It currently handles tabs and native dialog triggers only.
+The module auto-initializes the document in a browser. Call the initializer for a separately mounted root. It currently handles tabs and native dialog triggers only.
 
 ## Project facts
 
-- CSS-first and framework-agnostic.
-- No runtime dependency for CSS usage.
-- Uses `bk-` class names and `--bk-` CSS custom properties.
+- CSS-first and framework-agnostic; no runtime dependency for CSS usage.
+- Uses `bk-` classes and `--bk-` CSS custom properties.
 - No global reset or global element styling.
-- Source styles live in `src/brutal.css`; generated artifacts live in `dist/`.
-- Build: `bun run build` (runs `node scripts/build.mjs`).
-- Tests: `bun run test` (Node's built-in test runner).
-- Development server: `bun run dev`.
+- Source styles: `src/brutal.css`; generated artifacts: `dist/`.
+- Build: `bun run build`; tests: `bun run test`.
+- Manifest validation: `bun run check:manifest`.
+- Bundle guardrails: `bun run check:size`.
+- Full local gate: `bun run check`.
 - Read `AGENTS.md` before modifying the repository.

@@ -26,3 +26,7 @@ jobs:
         run: node scripts/build.mjs
       - name: Run tests
         run: node --test
+      - name: Validate component manifest
+        run: node scripts/check-component-manifest.mjs
+      - name: Enforce bundle size budgets
+        run: node scripts/check-bundle-size.mjs
