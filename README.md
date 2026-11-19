@@ -109,6 +109,12 @@ Override the CSS custom properties to theme the toolkit:
 
 ## Accessibility
 
+Use `.bk-visually-hidden` for text that should remain available to assistive technology without being visually displayed. It becomes visible while focused or active, so it can also support focusable skip links.
+
+```html
+<span class="bk-visually-hidden">Current page: Account settings</span>
+```
+
 BrutalKit includes visible keyboard focus indicators, reduced-motion handling, disabled and invalid form states, and semantic-friendly primitives. It does not apply a global box-sizing reset or global element styling, so existing application styles remain in control. The project aims for WCAG 2.2 AA, but this is not a claim of automatic conformance.
 
 Use semantic HTML, associate every form control with a label, provide accessible names for icon-only controls, and add appropriate descriptions and ARIA semantics where needed. Color must not be the only way information is conveyed.
