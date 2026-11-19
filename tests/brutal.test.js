@@ -38,3 +38,25 @@ test("build outputs are generated and non-empty", async () => {
     assert.ok(info.size > 0, `Build output is empty: ${file}`);
   }
 });
+
+const behavior = await readFile(new URL("../src/brutal.js", import.meta.url), "utf8");
+
+test("interactive tabs support arrow keys and Home/End navigation", () => {
+  assert.match(behavior, /ArrowRight/);
+  assert.match(behavior, /ArrowLeft/);
+  assert.match(behavior, /event\.key === "Home"/);
+  assert.match(behavior, /event\.key === "End"/);
+  assert.match(behavior, /aria-selected/);
+});
+
+test("dialogs use native modal APIs and restore focus", () => {
+  assert.match(behavior, /showModal\(\)/);
+  assert.match(behavior, /\.close\(\)/);
+  assert.match(behavior, /returnFocus\.get\(dialog\)\?\.focus\(\)/);
+});
+
+test("interactive styles include keyboard-visible and hidden states", () => {
+  assert.match(css, /\.bk-tab\[aria-selected="true"\]/);
+  assert.match(css, /\.bk-dialog::backdrop/);
+  assert.match(css, /\[hidden\]\s*\{/);
+});
