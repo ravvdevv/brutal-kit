@@ -1,5 +1,9 @@
 const initialized = new WeakSet();
 
+function eventElement(target) {
+  return target?.nodeType === 1 ? target : target?.parentElement ?? null;
+}
+
 function findById(root, id) {
   if (!id) return null;
   const doc = root.ownerDocument ?? (root.nodeType === 9 ? root : document);
@@ -14,7 +18,8 @@ export function initBrutalKit(root = document) {
   const returnFocus = new WeakMap();
 
   root.querySelectorAll("[data-bk-tabs]").forEach((tablist) => {
-    const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+    const tabs = [...tablist.querySelectorAll('[role="tab"]')]
+      .filter((tab) => tab.closest("[data-bk-tabs]") === tablist);
     if (tabs.length === 0) return;
 
     const panels = tabs.map((tab) => findById(root, tab.getAttribute("aria-controls")));
@@ -45,7 +50,7 @@ export function initBrutalKit(root = document) {
     activate(initial);
 
     tablist.addEventListener("click", (event) => {
-      const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const target = eventElement(event.target);
       const tab = target?.closest('[role="tab"]');
       const index = tabs.indexOf(tab);
       if (index >= 0) activate(index);
@@ -79,7 +84,7 @@ export function initBrutalKit(root = document) {
 
     if (openTrigger) {
       const dialog = findById(root, openTrigger.getAttribute("data-bk-dialog-open"));
-      if (dialog instanceof HTMLDialogElement && !dialog.open) {
+      if (dialog?.tagName === "DIALOG" && typeof dialog.showModal === "function" && !dialog.open) {
         returnFocus.set(dialog, openTrigger);
         dialog.showModal();
       }
