@@ -3,6 +3,7 @@ const initialized = new WeakSet();
 export function initBrutalKit(root = document) {
   if (initialized.has(root)) return;
   initialized.add(root);
+  const returnFocus = new WeakMap();
 
   root.querySelectorAll("[data-bk-tabs]").forEach((tablist) => {
     const tabs = [...tablist.querySelectorAll('[role="tab"]')];
@@ -55,13 +56,10 @@ export function initBrutalKit(root = document) {
       const dialogId = openTrigger.getAttribute("data-bk-dialog-open");
       const dialog = dialogId ? root.getElementById?.(dialogId) ?? root.querySelector(`#${CSS.escape(dialogId)}`) : null;
       if (dialog instanceof HTMLDialogElement && !dialog.open) {
+        returnFocus.set(dialog, openTrigger);
         dialog.showModal();
-        dialog.dataset.bkReturnFocus = openTrigger.id || "";
-        if (!openTrigger.id) {
-          openTrigger.id = `bk-trigger-${Math.random().toString(36).slice(2)}`;
-          dialog.dataset.bkReturnFocus = openTrigger.id;
-        }
       }
+
       return;
     }
 
@@ -71,9 +69,8 @@ export function initBrutalKit(root = document) {
 
   root.querySelectorAll("dialog[data-bk-dialog]").forEach((dialog) => {
     dialog.addEventListener("close", () => {
-      const triggerId = dialog.dataset.bkReturnFocus;
-      if (triggerId) root.getElementById(triggerId)?.focus();
-      delete dialog.dataset.bkReturnFocus;
+      returnFocus.get(dialog)?.focus();
+      returnFocus.delete(dialog);
     });
   });
 }
