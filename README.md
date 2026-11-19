@@ -15,22 +15,6 @@ After publishing a tagged release, pin the stylesheet to that version:
 <button class="bk-button bk-button--primary">Ship it ↗</button>
 ```
 
-### npm (after publication)
-
-The npm package is prepared but has not been published yet. Once it is available:
-
-```bash
-npm install @ravvdevv/brutal-kit
-```
-
-Then import the stylesheet:
-
-```js
-import "@ravvdevv/brutal-kit";
-// Optional interactive behavior:
-import "@ravvdevv/brutal-kit/js";
-```
-
 ### Local development
 
 Requires Node.js 22+ and Bun for the Vite demo:
@@ -57,10 +41,10 @@ Modifier classes are appended to their component, for example `bk-button bk-butt
 
 ## Interactive components
 
-Import the optional behavior module when you need tabs or dialogs:
+When working from a local clone, load the optional behavior module when you need tabs or dialogs:
 
 ```js
-import "@ravvdevv/brutal-kit/js";
+import "./src/brutal.js";
 ```
 
 ### Tabs
