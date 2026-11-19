@@ -60,7 +60,7 @@ Use the WAI-ARIA tabs pattern. Each tab needs an `aria-controls` reference to it
 <section class="bk-tabpanel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden>Security settings</section>
 ```
 
-Tabs support arrow-key navigation, Home, and End. Horizontal tablists use left/right arrows; vertical tablists use up/down arrows. Disabled tabs are skipped. Set `aria-orientation="vertical"` on a vertical tablist.
+Tabs support arrow-key navigation, Home, and End. Horizontal tablists use left/right arrows; vertical tablists use up/down arrows. Disabled tabs are skipped. Set `aria-orientation="vertical"` on a vertical tablist. Nested tablists are initialized independently.
 
 ### Dialogs
 
