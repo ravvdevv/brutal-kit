@@ -101,13 +101,13 @@
 .bk-dialog { width: min(92vw, 560px); max-width: calc(100% - 2rem); max-height: min(85vh, 720px); padding: 1.4rem; border: var(--bk-border); border-radius: 14px; background: var(--bk-surface); color: var(--bk-ink); box-shadow: 8px 8px 0 var(--bk-ink); }
 .bk-dialog::backdrop { background: rgb(32 35 59 / 58%); }
 .bk-dialog[open] { margin: auto; }
-.bk-dialog :focus-visible { outline: 3px solid #7055d9; outline-offset: 3px; }
+.bk-dialog :focus-visible { outline: 3px solid var(--bk-purple); outline-offset: 3px; }
 .bk-dialog__title { margin: 0 0 .7rem; font: 900 1.5rem/1.1 var(--bk-font-display); }
 .bk-dialog__body { color: var(--bk-muted); line-height: 1.6; }
 .bk-tooltip { position: relative; border-radius: 10px; }
 .bk-tooltip[data-bk-tooltip]::after { position: absolute; z-index: 5; left: 50%; bottom: calc(100% + .55rem); width: max-content; max-width: 220px; padding: .45rem .6rem; border: 1px solid var(--bk-ink); border-radius: 8px; background: var(--bk-ink); color: white; content: attr(data-bk-tooltip); font: 650 .75rem/1.35 var(--bk-font); opacity: 0; pointer-events: none; transform: translate(-50%, .25rem); transition: opacity 120ms ease, transform 120ms ease; }
 .bk-tooltip:hover::after, .bk-tooltip:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 .bk-tab:focus-visible, .bk-dialog:focus-visible, .bk-dialog .bk-button:focus-visible {
-  outline: 3px solid #7055d9;
+  outline: 3px solid var(--bk-purple);
   outline-offset: 3px;
 }
