@@ -62,7 +62,7 @@
   color: var(--bk-ink); font: 500 .95rem var(--bk-font);
 }
 .bk-textarea { min-height: 112px; resize: vertical; line-height: 1.5; }
-.bk-input::placeholder, .bk-textarea::placeholder { color: #77736b; opacity: 1; }
+.bk-input::placeholder, .bk-textarea::placeholder { color: #686b7e; opacity: 1; }
 .bk-input:disabled, .bk-textarea:disabled, .bk-select:disabled { opacity: .6; cursor: not-allowed; }
 .bk-field { display: grid; gap: .45rem; }
 .bk-field__hint { color: var(--bk-muted); font: .8rem/1.45 var(--bk-font); }
@@ -92,22 +92,22 @@
 .bk-tabs[aria-orientation="vertical"] .bk-tab { text-align: left; border-right: 0; border-bottom: var(--bk-border); }
 .bk-tab[aria-disabled="true"], .bk-tab:disabled { opacity: .5; cursor: not-allowed; }
 .bk-tab { min-height: 44px; padding: .7rem 1rem; border: var(--bk-border); border-bottom: 0; background: var(--bk-surface); color: var(--bk-ink); font: 750 .9rem var(--bk-font); cursor: pointer; }
-.bk-tab[aria-selected="true"] { background: var(--bk-yellow); box-shadow: 3px -3px 0 var(--bk-ink); }
+.bk-tab[aria-selected="true"] { background: var(--bk-purple); color: #fff; box-shadow: 3px -3px 0 var(--bk-ink); }
 .bk-tabpanel { padding: 1rem 0; line-height: 1.6; }
 .bk-accordion { border: var(--bk-border); background: var(--bk-surface); }
 .bk-accordion + .bk-accordion { border-top: 0; }
 .bk-accordion__summary { padding: .95rem 1rem; font-weight: 800; cursor: pointer; }
 .bk-accordion__content { padding: 0 1rem 1rem; color: var(--bk-muted); line-height: 1.55; }
 .bk-dialog { width: min(92vw, 560px); max-width: calc(100% - 2rem); max-height: min(85vh, 720px); padding: 1.4rem; border: var(--bk-border); border-radius: 14px; background: var(--bk-surface); color: var(--bk-ink); box-shadow: 8px 8px 0 var(--bk-ink); }
-.bk-dialog::backdrop { background: rgb(23 23 23 / 55%); }
+.bk-dialog::backdrop { background: rgb(32 35 59 / 58%); }
 .bk-dialog[open] { margin: auto; }
-.bk-dialog :focus-visible { outline: 3px solid #2367d1; outline-offset: 3px; }
+.bk-dialog :focus-visible { outline: 3px solid #7055d9; outline-offset: 3px; }
 .bk-dialog__title { margin: 0 0 .7rem; font: 900 1.5rem/1.1 var(--bk-font-display); }
 .bk-dialog__body { color: var(--bk-muted); line-height: 1.6; }
 .bk-tooltip { position: relative; border-radius: 10px; }
 .bk-tooltip[data-bk-tooltip]::after { position: absolute; z-index: 5; left: 50%; bottom: calc(100% + .55rem); width: max-content; max-width: 220px; padding: .45rem .6rem; border: 1px solid var(--bk-ink); border-radius: 8px; background: var(--bk-ink); color: white; content: attr(data-bk-tooltip); font: 650 .75rem/1.35 var(--bk-font); opacity: 0; pointer-events: none; transform: translate(-50%, .25rem); transition: opacity 120ms ease, transform 120ms ease; }
 .bk-tooltip:hover::after, .bk-tooltip:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 .bk-tab:focus-visible, .bk-dialog:focus-visible, .bk-dialog .bk-button:focus-visible {
-  outline: 3px solid #2367d1;
+  outline: 3px solid #7055d9;
   outline-offset: 3px;
 }

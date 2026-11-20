@@ -142,3 +142,11 @@ test("provides a visually-hidden utility without removing content from accessibi
   assert.match(css, /clip-path:\s*inset\(50%\)/);
   assert.match(css, /white-space:\s*nowrap/);
 });
+
+test("Cramio-aligned theme exposes purple actions and consistent keyboard focus", () => {
+  assert.match(css, /--bk-purple:\s*#7055d9/i);
+  assert.match(css, /\.bk-button--primary\s*\{[^}]*background:\s*var\(--bk-purple\)/s);
+  assert.match(css, /\.bk-tab\[aria-selected="true"\]\s*\{[^}]*background:\s*var\(--bk-purple\)/s);
+  assert.match(css, /\.bk-dialog :focus-visible\s*\{[^}]*outline:\s*3px solid var\(--bk-purple\)/s);
+  assert.doesNotMatch(css, /#2367d1/i);
+});

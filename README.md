@@ -65,7 +65,15 @@ Modifiers are added to the base component class. For example:
 
 ## Design tokens
 
-The default theme uses warm paper, ink navy, purple primary actions, and restrained amber, sky, peach, mint, and lilac accents. It pairs DM Sans body text with Manrope display headings, 10px component radii, and offset ink shadows. Override the tokens locally without changing component markup:
+The default theme uses warm paper, ink navy, purple primary actions, and restrained amber, sky, peach, mint, and lilac accents. It pairs DM Sans body text with Manrope display headings, 10px component radii, and offset ink shadows. The typefaces are optional external fonts. To use them, load Google Fonts before the BrutalKit stylesheet; otherwise the system fallbacks work without a network request:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+```
+
+Override the tokens locally without changing component markup:
 
 ```css
 :root {
